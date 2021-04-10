@@ -1,0 +1,38 @@
+$fa-font-path: "~font-awesome/fonts";
+@import "~font-awesome/scss/font-awesome.scss";
+
+html {
+    background-color: rgb(255, 246, 238) !important;
+    * {
+        font-family: 'Noto Sans', sans-serif;
+    }
+}
+
+// Links are the same color as text and have no underline
+a {
+    position: relative;
+    color: inherit;
+    text-decoration: none;
+}
+
+// Hover underline effect, links will always have this
+a, .hover-underline {
+    &:before, &:after {
+        content: '';
+        position: absolute;
+        transition: transform .2s ease;
+    }
+
+    &:before {
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 2px;
+        background: black;
+        transform: scaleX(0); // 'Transform' allows for expansion from the middle of the link. 'Width' makes it go from left to right.
+    }
+
+    &:hover:before {
+        transform: scaleX(1);
+    }
+}

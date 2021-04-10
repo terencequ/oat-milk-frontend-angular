@@ -1,0 +1,28 @@
+$form-element-width: 300px;
+$form-element-height: 30px;
+
+.container {
+    display: block;
+    text-align: center;
+    height: 95vh;
+}
+
+form {
+    margin-top: 20vh;
+    display: inline-block;
+    > input {
+        box-sizing: border-box;
+        display: block;
+        margin: 10px;
+        width: $form-element-width;
+        height: $form-element-height;
+    }
+
+    > img {
+        margin: auto;
+    }
+
+    > h1 {
+        margin-bottom: 30px;
+    }
+}

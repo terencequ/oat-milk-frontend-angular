@@ -21,12 +21,12 @@
     }
 }
 
-nav > ul {
+nav {
     list-style: none;
     margin-left: 50px;
     ul {
-        margin-right: 4vw;
         li {
+            margin-left: 50px;
             a {
                 font-size: 18px;
             }

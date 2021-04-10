@@ -75,6 +75,7 @@ export class LoginPageComponent implements OnInit {
       try {
         var response = await this.userService.userLoginPost(loginRequest, "body").toPromise();
         this.authService.setToken(response.authToken ?? "");
+        this.router.navigate(["/dashboard"])
       } catch (error) {
         this.errors["overall"] = error.error.message;
         this.authService.clearToken();

@@ -99,6 +99,7 @@ export class RegisterPageComponent implements OnInit {
         }
         var response = await this.userService.userRegisterPost(registerRequest, "body").toPromise();
         this.authService.setToken(response.authToken ?? "");
+        this.router.navigate(["/dashboard"])
       } catch (error){
         this.errors["overall"] = error.error.message;
         this.authService.clearToken();

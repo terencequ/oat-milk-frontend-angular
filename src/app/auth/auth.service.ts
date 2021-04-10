@@ -19,7 +19,7 @@ export class AuthService {
    */
   public async isAuthenticated(): Promise<boolean> {
     try {
-      this.userService.userProfileGet("body").toPromise();
+      await this.userService.userProfileGet("body").toPromise();
       return true;
     } catch(error){
       return false;
@@ -32,6 +32,14 @@ export class AuthService {
    */
   public setToken(token: string): void {
     localStorage.setItem(TOKEN_KEY, token);
+  }
+
+  /**
+   * Gets the JWT token used to authenticate with the backend.
+   * @param token JWT token
+   */
+  public getToken(): string {
+    return localStorage.getItem(TOKEN_KEY) ?? "";
   }
 
   /**

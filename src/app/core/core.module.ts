@@ -1,12 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-
+import { NavigationComponent } from './navigation/navigation.component';
+import { AppRoutingModule } from '../app-routing.module';
 
 @NgModule({
-  declarations: [],
+  declarations: [NavigationComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    AppRoutingModule
+  ],
+  exports: [
+    NavigationComponent
   ]
 })
 export class CoreModule { }

@@ -1,0 +1,35 @@
+/* Whole container */
+.container * {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Logo (image and text) */
+.logo * {
+    /* Make sure logo contents cannot be highlighted or selected */
+    pointer-events: none;
+    user-select: none;
+}
+.logo > img {
+    width: 48px;
+    height: 48px;
+}
+.logo > h1 {
+    padding: 0px;
+    margin: 0px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+/* Navigation */
+nav > ul {
+    /* No bullet points or margin */
+    list-style: none;
+    margin-left: 50px;
+}
+nav > ul > li {
+    margin-right: 4vw;
+}
+nav > ul > li > a {
+    font-size: 18px;
+}

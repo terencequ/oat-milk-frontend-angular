@@ -15,7 +15,6 @@ import { environment } from 'src/environments/environment';
     AuthRoutingModule, 
     ReactiveFormsModule, 
     SharedModule, 
-    ApiModule.forRoot({rootUrl: environment.backendUrl})
   ]
 })
 export class AuthModule { }

@@ -1,48 +1,32 @@
-/* tslint:disable */
-/* eslint-disable */
 import { NgModule, ModuleWithProviders, SkipSelf, Optional } from '@angular/core';
+import { Configuration } from './configuration';
 import { HttpClient } from '@angular/common/http';
-import { ApiConfiguration, ApiConfigurationParams } from './api-configuration';
 
-import { PingService } from './services/ping.service';
-import { UserService } from './services/user.service';
+import { PingService } from './api/ping.service';
+import { UserService } from './api/user.service';
 
-/**
- * Module that provides all services and configuration.
- */
 @NgModule({
-  imports: [],
-  exports: [],
+  imports:      [],
   declarations: [],
-  providers: [
-    PingService,
-    UserService,
-    ApiConfiguration
-  ],
+  exports:      [],
+  providers: []
 })
-export class ApiModule {
-  static forRoot(params: ApiConfigurationParams): ModuleWithProviders<ApiModule> {
-    return {
-      ngModule: ApiModule,
-      providers: [
-        {
-          provide: ApiConfiguration,
-          useValue: params
-        }
-      ]
+export class BackendApiModule {
+    public static forRoot(configurationFactory: () => Configuration): ModuleWithProviders<BackendApiModule> {
+        return {
+            ngModule: BackendApiModule,
+            providers: [ { provide: Configuration, useFactory: configurationFactory } ]
+        };
     }
-  }
 
-  constructor( 
-    @Optional() @SkipSelf() parentModule: ApiModule,
-    @Optional() http: HttpClient
-  ) {
-    if (parentModule) {
-      throw new Error('ApiModule is already loaded. Import in your base AppModule only.');
+    constructor( @Optional() @SkipSelf() parentModule: BackendApiModule,
+                 @Optional() http: HttpClient) {
+        if (parentModule) {
+            throw new Error('BackendApiModule is already loaded. Import in your base AppModule only.');
+        }
+        if (!http) {
+            throw new Error('You need to import the HttpClientModule in your AppModule! \n' +
+            'See also https://github.com/angular/angular/issues/20575');
+        }
     }
-    if (!http) {
-      throw new Error('You need to import the HttpClientModule in your AppModule! \n' +
-      'See also https://github.com/angular/angular/issues/20575');
-    }
-  }
 }

@@ -1,0 +1,410 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+      "title": "OatMilk.Backend.Api",
+      "version": "v1"
+    },
+    "paths": {
+      "/Ping": {
+        "get": {
+          "tags": [
+            "Ping"
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "type": "boolean"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "type": "boolean"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/Ping/auth": {
+        "get": {
+          "tags": [
+            "Ping"
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "type": "boolean"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "type": "boolean"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/User/login": {
+        "post": {
+          "tags": [
+            "User"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserLoginRequest"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserLoginRequest"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserLoginRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/AuthTokenResponse"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/AuthTokenResponse"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/AuthTokenResponse"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ArgumentErrorResponse"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ArgumentErrorResponse"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ArgumentErrorResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/User/register": {
+        "post": {
+          "tags": [
+            "User"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserRegisterRequest"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserRegisterRequest"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserRegisterRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/AuthTokenResponse"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/AuthTokenResponse"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/AuthTokenResponse"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ArgumentErrorResponse"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ArgumentErrorResponse"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ArgumentErrorResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/User/profile": {
+        "get": {
+          "tags": [
+            "User"
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/UserResponse"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/UserResponse"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/UserResponse"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ArgumentErrorResponse"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ArgumentErrorResponse"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ArgumentErrorResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/User/exists": {
+        "get": {
+          "tags": [
+            "User"
+          ],
+          "parameters": [
+            {
+              "name": "userId",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "type": "boolean"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "type": "boolean"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ArgumentErrorResponse"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ArgumentErrorResponse"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ArgumentErrorResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "UserLoginRequest": {
+          "required": [
+            "email",
+            "password"
+          ],
+          "type": "object",
+          "properties": {
+            "email": {
+              "type": "string",
+              "format": "email"
+            },
+            "password": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        "AuthTokenResponse": {
+          "type": "object",
+          "properties": {
+            "authToken": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "ErrorType": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer",
+          "format": "int32"
+        },
+        "ArgumentErrorResponse": {
+          "type": "object",
+          "properties": {
+            "errorType": {
+              "$ref": "#/components/schemas/ErrorType"
+            },
+            "message": {
+              "type": "string",
+              "nullable": true
+            },
+            "parameter": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "UserRegisterRequest": {
+          "required": [
+            "displayName",
+            "email",
+            "password"
+          ],
+          "type": "object",
+          "properties": {
+            "displayName": {
+              "maxLength": 20,
+              "minLength": 4,
+              "type": "string"
+            },
+            "email": {
+              "type": "string",
+              "format": "email"
+            },
+            "password": {
+              "pattern": "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,20}$",
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        "UserResponse": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "displayName": {
+              "type": "string",
+              "nullable": true
+            },
+            "email": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        }
+      }
+    }
+  }

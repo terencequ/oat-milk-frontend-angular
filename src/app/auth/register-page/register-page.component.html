@@ -5,8 +5,8 @@
         <input name="email" placeholder="Email address" formControlName="email">
         <input name="displayName" placeholder="Display name" formControlName="displayName">
         <input name="password" placeholder="Password" formControlName="password" type="password">
-        <input name="password" placeholder="Confirm password" formControlName="password" type="password">
-        <input name="login" type="submit" (click)="register($event)">
+        <input name="password" placeholder="Confirm password" formControlName="confirmPassword" type="password">
+        <input name="register" type="submit" (click)="register($event)">
     </form>
     <div>
         <a routerLink="/auth/login">Don't have an account? Login here.</a>

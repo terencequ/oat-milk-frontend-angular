@@ -5,8 +5,6 @@ import { RegisterPageComponent } from './register-page/register-page.component';
 import { AuthRoutingModule } from './auth-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
-import { ApiModule } from '../api/backend/api.module';
-import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [LoginPageComponent, RegisterPageComponent],

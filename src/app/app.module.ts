@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { environment } from 'src/environments/environment';
 import { HttpClientModule } from '@angular/common/http';
-import { BackendApiModule, Configuration, ConfigurationParameters } from './api/backend';
+import { BackendApiModule, BASE_PATH, Configuration, ConfigurationParameters } from './api/backend';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,15 @@ import { BackendApiModule, Configuration, ConfigurationParameters } from './api/
     HttpClientModule,
     BackendApiModule
   ],
-  providers: [],
+  providers: [{
+    provide: Configuration,
+    useFactory: () => new Configuration(
+      {
+        basePath: environment.backendUrl,
+      }
+    ),
+    multi: false
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

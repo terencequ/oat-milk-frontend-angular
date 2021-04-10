@@ -1,11 +1,16 @@
 $fa-font-path: "~font-awesome/fonts";
-@import "~font-awesome/scss/font-awesome.scss";
+@import "~font-awesome/scss/font-awesome";
+@import "./assets/colors";
 
 html {
-    background-color: rgb(255, 246, 238) !important;
+    background-color: $background-color !important;
     * {
         font-family: 'Noto Sans', sans-serif;
     }
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Josefin Slab', serif;
 }
 
 // Links are the same color as text and have no underline
@@ -34,5 +39,47 @@ a, .hover-underline {
 
     &:hover:before {
         transform: scaleX(1);
+    }
+}
+
+// Forms will default to top down
+$form-element-width: 350px;
+$form-element-height: 40px;
+
+form {
+    margin: auto;
+    margin-top: 20vh;
+    text-align: center;
+    > input {
+        box-sizing: border-box;
+        display: block;
+        padding: 0px 10px;
+        margin: 10px auto;
+
+        width: $form-element-width;
+        height: $form-element-height;
+    }
+
+    > img {
+        margin: auto;
+    }
+
+    > h1 {
+        margin-bottom: 30px;
+    }
+}
+
+// Button styling
+button, input[type="submit"], input[type="reset"] {
+	background: $primary-color;
+	color: inherit;
+	border: none;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+    min-height: 40px;
+    transition: background 0.2s;
+    &:hover {
+        background: $primary-color-emphasized;
     }
 }

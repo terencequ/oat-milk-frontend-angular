@@ -1,1 +1,12 @@
-<p>register-page works!</p>
+<div class="container">
+    <form [formGroup]="form">
+        <app-logo></app-logo>
+        <h1>Register</h1>
+        <input name="email" placeholder="Email address" formControlName="email">
+        <input name="displayName" placeholder="Display name" formControlName="displayName">
+        <input name="password" placeholder="Password" formControlName="password" type="password">
+        <input name="password" placeholder="Confirm password" formControlName="password" type="password">
+        <input name="login" type="submit" (click)="register($event)">
+        <a routerLink="/auth/login">Already have an account? Login here.</a>
+    </form>
+</div>

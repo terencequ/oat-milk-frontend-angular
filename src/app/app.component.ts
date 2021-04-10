@@ -15,8 +15,8 @@ export class AppComponent implements OnInit {
     this.router.events.subscribe((event) => {
       if(event instanceof NavigationEnd){
         let navEnd = event as NavigationEnd;
-        console.log(`Navigation success for ${navEnd.url}`);
-        this.routeIsInApp = !navEnd.url.startsWith("/auth"); // Nav bar and footer shouldn't show for /auth
+        console.log(`Navigation success for ${navEnd.urlAfterRedirects}`);
+        this.routeIsInApp = !navEnd.urlAfterRedirects.startsWith("/auth"); // Nav bar and footer shouldn't show for /auth
       }
     });
   }

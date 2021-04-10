@@ -43,7 +43,7 @@ a, .hover-underline {
 }
 
 // Forms will default to top down
-$form-element-width: 350px;
+$form-element-width: 400px;
 $form-element-height: 40px;
 
 form {
@@ -57,6 +57,7 @@ form {
         margin: 10px auto;
 
         width: $form-element-width;
+        max-width: 95%;
         height: $form-element-height;
     }
 
@@ -67,6 +68,10 @@ form {
     > h1 {
         margin-bottom: 30px;
     }
+}
+
+small {
+    color: $danger-color;
 }
 
 // Button styling

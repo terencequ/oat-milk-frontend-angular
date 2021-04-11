@@ -1,0 +1,35 @@
+.container * {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.logo {
+    * {
+        // No highlighting or selecting
+        pointer-events: none;
+        user-select: none;
+    }
+    img {
+        width: 48px;
+        height: 48px;
+    }
+    h1 {
+        padding: 0px;
+        margin: 0px;
+        font-size: 20px;
+        font-weight: 600;
+    }
+}
+
+nav {
+    list-style: none;
+    margin-left: 50px;
+    ul {
+        li {
+            margin-left: 50px;
+            a {
+                font-size: 18px;
+            }
+        }
+    }
+}

@@ -1,0 +1,24 @@
+<div class="container">
+    <form [formGroup]="form">
+        <app-logo></app-logo>
+        <h1>Register</h1>
+
+        <small>{{errors["email"]}}</small>
+        <input name="email" placeholder="Email address" formControlName="email">
+
+        <small>{{errors["displayName"]}}</small>
+        <input name="displayName" placeholder="Display name" formControlName="displayName">
+
+        <small>{{errors["password"]}}</small>
+        <input name="password" placeholder="Password" formControlName="password" type="password">
+
+        <small>{{errors["confirmPassword"]}}</small>
+        <input name="password" placeholder="Confirm password" formControlName="confirmPassword" type="password">
+        
+        <input name="register" type="submit" (click)="register($event)">
+        <small>{{errors["overall"]}}</small>
+    </form>
+    <div>
+        <a routerLink="/auth/login">Don't have an account? Login here.</a>
+    </div>
+</div>

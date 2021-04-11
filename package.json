@@ -6,6 +6,7 @@
     "start": "ng serve",
     "generate:api": "openapi-generator-cli generate",
     "build": "ng build",
+    "build:azure": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

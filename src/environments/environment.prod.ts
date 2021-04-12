@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  backendUrl: "https://localhost:5001"
+  backendUrl: "https://oat-milk-functions.azurewebsites.net/proxy/backend"
 };

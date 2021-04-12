@@ -2,7 +2,7 @@ $fa-font-path: "~font-awesome/fonts";
 @import "~font-awesome/scss/font-awesome";
 @import "./assets/colors";
 
-html {
+html, body {
     background-color: $background-color !important;
     * {
         font-family: 'Noto Sans', sans-serif;

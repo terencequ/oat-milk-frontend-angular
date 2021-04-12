@@ -1,34 +1,70 @@
+@import "../../../assets/devices";
+
 .container * {
-    display: inline-block;
     vertical-align: middle;
+    display: inline-block;
 }
 
 .logo {
+    display: block;
+}
+
+.mobile-nav-toggle {
+    display: none;
     * {
-        // No highlighting or selecting
-        pointer-events: none;
-        user-select: none;
-    }
-    img {
-        width: 48px;
-        height: 48px;
-    }
-    h1 {
-        padding: 0px;
-        margin: 0px;
-        font-size: 20px;
-        font-weight: 600;
+        display: none;
     }
 }
 
 nav {
     list-style: none;
-    margin-left: 50px;
+    margin: 0px 20px;
     ul {
         li {
-            margin-left: 50px;
+            margin: 0px 20px;
             a {
                 font-size: 18px;
+            }
+        }
+    }
+}
+
+@include phone {
+    .container {
+        margin: 0px;
+        * {
+            display: inherit;
+        }
+    }
+
+    .mobile-nav-toggle {
+        display: inherit;
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        top: 25px;
+        left: 30px;
+        i {
+            font-size: 40px;
+        }
+    }
+
+    .logo {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        top: 10px;
+        right: 30px;
+    }
+
+    nav {
+        list-style: none;
+        background-color: lavender;
+        padding: 10px 0px;
+        margin: 100px 0px 0px 0px;
+        ul {
+            li {
+                margin: 30px 0px;
             }
         }
     }

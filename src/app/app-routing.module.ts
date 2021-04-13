@@ -14,6 +14,11 @@ const routes: Routes = [
     loadChildren: ()=> import('./dashboard/dashboard.module').then(m => m.DashboardModule),
     canActivate: [AuthGuardService]
   },
+  {
+    path: 'character-sheet',
+    loadChildren: ()=> import('./character-sheet/character-sheet.module').then(m => m.CharacterSheetModule),
+    canActivate: [AuthGuardService]
+  },
   { path: '**', redirectTo: 'auth/login' }
 ];
 

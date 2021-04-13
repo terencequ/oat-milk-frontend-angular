@@ -1,0 +1,34 @@
+@import "../../../assets/devices";
+@import "../../../assets/colors";
+
+$default-spacing: 2vw;
+$nav-bar-height: 9vw;
+$nav-bar-max-height: 7rem;
+$nav-link-font-size: 1.2em;
+
+nav {
+    background-color: $background-color-emphasized;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    height: $nav-bar-height;
+    max-height: $nav-bar-max-height;
+    .logo {
+        display: inline-block;
+        padding: $default-spacing;
+    }
+    .links {
+        display: flex;
+        width: 80vw;
+        a {
+            font-size: $nav-link-font-size;
+            margin: 0px $default-spacing;
+        }
+    }
+}
+
+.spacer {
+    height: $nav-bar-height;
+    max-height: $nav-bar-max-height;
+}

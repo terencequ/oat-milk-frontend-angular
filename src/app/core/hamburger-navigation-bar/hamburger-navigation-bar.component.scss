@@ -1,0 +1,63 @@
+@import '../../../assets/colors';
+
+$top-bar-height: 20vw;
+$top-bar-max-height: 5em;
+$outer-horizontal-padding: 3vw;
+$nav-link-vertical-spacing: 7vw;
+$nav-link-font-size: 1.2em;
+
+.container {
+    position: fixed;
+    width: 100%;
+}
+
+.top-bar {
+    display: block;
+    background-color: $background-color-emphasized;
+    height: $top-bar-height;
+    max-height: $top-bar-max-height;
+    padding: 0px $outer-horizontal-padding;
+    
+    .hamburger {
+        display: inline-block;
+        font-size: 40px;
+        width: 50%;
+        text-align: left;
+        i {
+            margin-left: 10px;
+            margin-top: 20px;
+            text-align: center;
+            height: 40px;
+            width: 40px;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+    .logo {
+        display: inline-block;
+        width: 50%;
+        text-align: right;
+    }
+}
+
+nav {
+    background-color: $background-color-emphasized;
+    display: block;
+    transition: max-height 0.4s;
+    overflow: hidden;
+    ul {
+        list-style: none;
+        li {
+            margin: $nav-link-vertical-spacing 0px;
+            a {
+                font-size: $nav-link-font-size;
+            }
+        }
+    }
+}
+
+.spacer {
+    height: $top-bar-height;
+    max-height: $top-bar-max-height;
+}

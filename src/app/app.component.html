@@ -1,5 +1,5 @@
-<div *ngIf="routeIsInApp">
-    <app-navigation></app-navigation>
+<div class="container">
+    <app-top-navigation-bar class="desktop" *ngIf="routeIsInApp"></app-top-navigation-bar>
+    <app-hamburger-navigation-bar class="phone tablet" *ngIf="routeIsInApp"></app-hamburger-navigation-bar>
+    <router-outlet></router-outlet>
 </div>
-
-<router-outlet></router-outlet>

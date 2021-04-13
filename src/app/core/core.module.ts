@@ -1,18 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NavigationComponent } from './navigation/navigation.component';
+import { TopNavigationBarComponent } from './top-navigation-bar/top-navigation-bar.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { SharedModule } from '../shared/shared.module';
+import { HamburgerNavigationBarComponent } from './hamburger-navigation-bar/hamburger-navigation-bar.component';
 
 @NgModule({
-  declarations: [NavigationComponent],
+  declarations: [TopNavigationBarComponent, HamburgerNavigationBarComponent],
   imports: [
     CommonModule,
     AppRoutingModule,
     SharedModule
   ],
   exports: [
-    NavigationComponent
+    TopNavigationBarComponent,
+    HamburgerNavigationBarComponent
   ]
 })
 export class CoreModule { }

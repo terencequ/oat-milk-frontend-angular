@@ -6,31 +6,27 @@ $outer-horizontal-padding: 3vw;
 $nav-link-vertical-spacing: 7vw;
 $nav-link-font-size: 1.2em;
 
-.container {
+.outer-header {
+  height: $top-bar-height;
+  max-height: $top-bar-max-height;
+  background-color: $background-color-emphasized;
+  overflow: visible;
   position: fixed;
   width: 100%;
 }
 
 .top-bar {
-  display: block;
-  background-color: $background-color-emphasized;
+  display: flex;
+  align-items: center;
   height: $top-bar-height;
   max-height: $top-bar-max-height;
-  padding: 0px $outer-horizontal-padding;
-
+  padding: 0 $outer-horizontal-padding;
   .hamburger {
     display: inline-block;
     font-size: 40px;
-    width: 50%;
     text-align: left;
-
     i {
-      margin-left: 10px;
-      margin-top: 20px;
       text-align: center;
-      height: 40px;
-      width: 40px;
-
       &:hover {
         cursor: pointer;
       }
@@ -39,8 +35,8 @@ $nav-link-font-size: 1.2em;
 
   .logo {
     display: inline-block;
-    width: 50%;
     text-align: right;
+    margin-left: auto;
   }
 }
 

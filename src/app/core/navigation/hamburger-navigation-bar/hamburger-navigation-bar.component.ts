@@ -9,7 +9,7 @@ import {AuthService} from 'src/app/auth/auth.service';
 })
 export class HamburgerNavigationBarComponent implements OnInit {
 
-  isExpanded: boolean = false;
+  isExpanded = false;
 
   constructor(private authService: AuthService,
               private router: Router) {

@@ -1,6 +1,6 @@
-<div class="container">
+<div class="register-page">
   <form [formGroup]="form">
-    <app-logo></app-logo>
+    <app-logo [wordUnderImage]="true"></app-logo>
     <h1>Register</h1>
 
     <small>{{errors["email"]}}</small>
@@ -19,6 +19,6 @@
     <small>{{errors["overall"]}}</small>
   </form>
   <div>
-    <a routerLink="/auth/login">Don't have an account? Login here.</a>
+    <a class="hover-underline" routerLink="/auth/login">Don't have an account? Login here.</a>
   </div>
 </div>

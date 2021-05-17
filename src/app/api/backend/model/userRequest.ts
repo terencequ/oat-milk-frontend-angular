@@ -9,12 +9,11 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { ErrorType } from './errorType';
 
 
-export interface ArgumentErrorResponse { 
-    errorType?: ErrorType;
-    message?: string | null;
-    parameter?: string | null;
+export interface UserRequest { 
+    displayName: string;
+    email: string;
+    password: string;
 }
 

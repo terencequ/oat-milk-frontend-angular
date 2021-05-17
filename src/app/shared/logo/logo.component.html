@@ -1,4 +1,6 @@
-<div class="logo">
+<div class="app-logo" [ngStyle]="{
+          flexDirection: wordUnderImage ? 'column' : 'row'
+      }">
   <img src="assets/oatmilk-128x128.png" alt="Oat Milk logo"
        [ngStyle]="{
             display: showImage ? 'inherit' : 'none',

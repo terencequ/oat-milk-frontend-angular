@@ -19,8 +19,8 @@ export class TopNavigationBarComponent implements OnInit {
   /**
    * Logs out the user. Clears the token and navigates to login screen.
    */
-  logout() {
+  async logout(): Promise<void> {
     this.authService.clearToken();
-    this.router.navigate(['/auth/login']);
+    await this.router.navigate(['/auth/login']);
   }
 }

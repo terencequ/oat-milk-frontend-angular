@@ -11,9 +11,7 @@
  */
 
 
-export interface UserRegisterRequest { 
-    displayName: string;
-    email: string;
-    password: string;
+export interface CharacterRequest { 
+    name?: string | null;
 }
 

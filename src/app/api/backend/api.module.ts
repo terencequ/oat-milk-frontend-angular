@@ -2,6 +2,9 @@ import { NgModule, ModuleWithProviders, SkipSelf, Optional } from '@angular/core
 import { Configuration } from './configuration';
 import { HttpClient } from '@angular/common/http';
 
+import { AbilityService } from './api/ability.service';
+import { CharacterService } from './api/character.service';
+import { EffectService } from './api/effect.service';
 import { PingService } from './api/ping.service';
 import { UserService } from './api/user.service';
 

@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
-import {UserLoginRequest, UserService} from 'src/app/api/backend';
 import {AuthService} from '../auth.service';
+import {ErrorResponse, UserLoginRequest, UserService} from '../../api/backend';
 
 @Component({
   selector: 'app-login-page',
@@ -12,7 +12,7 @@ import {AuthService} from '../auth.service';
 export class LoginPageComponent implements OnInit {
 
   form: FormGroup;
-  errors: any = {
+  errors = {
     email: '',
     password: '',
     overall: ''
@@ -35,7 +35,7 @@ export class LoginPageComponent implements OnInit {
    * Validate the login form, and set the error messages.
    * @returns True if form is valid, False otherwise.
    */
-  validateForm() {
+  validateForm(): boolean {
     this.errors = {
       email: '',
       password: '',
@@ -43,17 +43,17 @@ export class LoginPageComponent implements OnInit {
     };
 
     // Email
-    var email = this.form.get('email');
+    const email = this.form.get('email');
     if (email?.getError('required')) {
-      this.errors['email'] = 'Email is required.';
+      this.errors.email = 'Email is required.';
     } else if (email?.getError('email')) {
-      this.errors['email'] = 'Email must be valid.';
+      this.errors.email = 'Email must be valid.';
     }
 
     // Password
-    var password = this.form.get('password');
+    const password = this.form.get('password');
     if (password?.getError('required')) {
-      this.errors['password'] = 'Password is required.';
+      this.errors.password = 'Password is required.';
     }
 
     return this.form.valid;
@@ -73,11 +73,12 @@ export class LoginPageComponent implements OnInit {
 
       // Try to log in
       try {
-        var response = await this.userService.userLoginPost(loginRequest, 'body').toPromise();
+        const response = await this.userService.userLoginPost(loginRequest, 'body').toPromise();
         this.authService.setToken(response.authToken ?? '');
-        this.router.navigate(['/dashboard']);
+        await this.router.navigate(['/dashboard']);
       } catch (error) {
-        this.errors['overall'] = error.error.message;
+        const errorResponse = error.error as ErrorResponse;
+        this.errors.overall = errorResponse.message ?? 'An unexpected error has occurred.';
         this.authService.clearToken();
       }
     }

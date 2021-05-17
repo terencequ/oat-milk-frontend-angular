@@ -9,12 +9,16 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { EffectResponse } from './effectResponse';
 
 
-export type ErrorType = 0 | 1;
-
-export const ErrorType = {
-    NUMBER_0: 0 as ErrorType,
-    NUMBER_1: 1 as ErrorType
-};
+export interface EffectResponsePageResponse { 
+    pageIndex?: number;
+    pageSize?: number;
+    totalCount?: number;
+    totalPages?: number;
+    hasPreviousPage?: boolean;
+    hasNextPage?: boolean;
+    items?: Array<EffectResponse> | null;
+}
 

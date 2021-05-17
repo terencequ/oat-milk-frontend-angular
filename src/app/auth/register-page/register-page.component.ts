@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, ValidationErrors, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
-import {UserRegisterRequest, UserService} from 'src/app/api/backend';
+import {ErrorResponse, UserRequest, UserService} from 'src/app/api/backend';
 import {AuthService} from '../auth.service';
 
 @Component({
@@ -50,38 +50,38 @@ export class RegisterPageComponent implements OnInit {
     };
 
     // Email
-    var email = this.form.get('email');
+    const email = this.form.get('email');
     if (email?.getError('required')) {
-      this.errors['email'] = 'Email is required.';
+      this.errors.email = 'Email is required.';
     } else if (email?.getError('email')) {
-      this.errors['email'] = 'Email must be valid.';
+      this.errors.email = 'Email must be valid.';
     }
 
     // Display Name
-    var displayName = this.form.get('displayName');
+    const displayName = this.form.get('displayName');
     if (displayName?.getError('required')) {
-      this.errors['displayName'] = 'Display name is required.';
+      this.errors.displayName = 'Display name is required.';
     } else if (displayName?.getError('minLength') || displayName?.getError('maxLength')) {
-      this.errors['displayName'] = 'Display name must be between 4 and 20 characters inclusive.';
+      this.errors.displayName = 'Display name must be between 4 and 20 characters inclusive.';
     }
 
     // Password
-    var password = this.form.get('password');
+    const password = this.form.get('password');
     if (password?.getError('required')) {
-      this.errors['password'] = 'Password is required.';
+      this.errors.password = 'Password is required.';
     } else if (password?.getError('pattern')) {
-      this.errors['password'] = 'Password must have one letter, one number and be between 8 and 20 characters inclusive.';
+      this.errors.password = 'Password must have one letter, one number and be between 8 and 20 characters inclusive.';
     }
 
     // Confirm password
-    var confirmPassword = this.form.get('confirmPassword');
+    const confirmPassword = this.form.get('confirmPassword');
     if (confirmPassword?.getError('required')) {
-      this.errors['confirmPassword'] = 'Password confirmation is required.';
-    } else if (confirmPassword?.value != password?.value) {
-      this.errors['confirmPassword'] = 'The passwords do not match.';
+      this.errors.confirmPassword = 'Password confirmation is required.';
+    } else if (confirmPassword?.value !== password?.value) {
+      this.errors.confirmPassword = 'The passwords do not match.';
     }
 
-    return this.form.valid && confirmPassword?.value == password?.value;
+    return this.form.valid && confirmPassword?.value === password?.value;
   }
 
   async register(event: Event): Promise<void> {
@@ -92,16 +92,17 @@ export class RegisterPageComponent implements OnInit {
       const value = this.form.value;
       // Try to register
       try {
-        let registerRequest: UserRegisterRequest = {
+        const registerRequest: UserRequest = {
           email: value.email,
           displayName: value.displayName,
           password: value.password
         };
-        var response = await this.userService.userRegisterPost(registerRequest, 'body').toPromise();
+        const response = await this.userService.userRegisterPost(registerRequest, 'body').toPromise();
         this.authService.setToken(response.authToken ?? '');
-        this.router.navigate(['/dashboard']);
+        await this.router.navigate(['/dashboard']);
       } catch (error) {
-        this.errors['overall'] = error.error.message;
+        const errorResponse = error.error as ErrorResponse;
+        this.errors.overall = errorResponse.message ?? 'An unexpected error has occurred.';
         this.authService.clearToken();
       }
     }

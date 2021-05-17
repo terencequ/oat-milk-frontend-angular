@@ -26,7 +26,8 @@ $nav-link-font-size: 1.2em;
     font-size: 40px;
     text-align: left;
     i {
-      text-align: center;
+      align-items: center;
+      display: flex;
       &:hover {
         cursor: pointer;
       }

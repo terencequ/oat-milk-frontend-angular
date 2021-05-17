@@ -1,11 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@700&display=swap');
 
 .logo {
-  text-align: center;
-
+  align-items: center;
+  display: flex;
   * {
-    vertical-align: middle;
-    margin: auto;
     text-shadow: 2px 2px 4px #c4c4c4;
 
     // No highlighting or selecting
@@ -14,8 +12,8 @@
   }
 
   h1 {
-    padding: 0px;
-    margin: 0px;
+    padding: inherit 0 0;
+    margin: 0;
     font-family: 'Josefin Slab', serif;
     font-weight: 600;
   }

@@ -2,31 +2,31 @@
 
 
 .desktop {
-    display: none;
+  display: none;
 }
 
 .phone {
-    display: none;
+  display: none;
 }
 
 .tablet {
-    display: none;
+  display: none;
 }
 
 @include desktop {
-    .desktop {
-        display: inherit;
-    }
+  .desktop {
+    display: inherit;
+  }
 }
 
 @include phone {
-    .phone {
-        display: inherit;
-    }
+  .phone {
+    display: inherit;
+  }
 }
 
 @include tablet {
-    .tablet {
-        display: inherit;
-    }
+  .tablet {
+    display: inherit;
+  }
 }

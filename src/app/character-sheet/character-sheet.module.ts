@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { CharacterSheetListPageComponent } from './character-sheet-list-page/character-sheet-list-page.component';
-import { CharacterSheetRoutingModule } from './character-sheet-routing.module';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {CharacterSheetListPageComponent} from './character-sheet-list-page/character-sheet-list-page.component';
+import {CharacterSheetRoutingModule} from './character-sheet-routing.module';
 
 @NgModule({
   declarations: [CharacterSheetListPageComponent],
@@ -10,4 +10,5 @@ import { CharacterSheetRoutingModule } from './character-sheet-routing.module';
     CharacterSheetRoutingModule,
   ]
 })
-export class CharacterSheetModule { }
+export class CharacterSheetModule {
+}

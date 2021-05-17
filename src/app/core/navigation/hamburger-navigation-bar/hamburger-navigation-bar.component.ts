@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { AuthService } from 'src/app/auth/auth.service';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {AuthService} from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-hamburger-navigation-bar',
@@ -12,7 +12,8 @@ export class HamburgerNavigationBarComponent implements OnInit {
   isExpanded: boolean = false;
 
   constructor(private authService: AuthService,
-    private router: Router) { }
+              private router: Router) {
+  }
 
   ngOnInit(): void {
   }
@@ -21,7 +22,7 @@ export class HamburgerNavigationBarComponent implements OnInit {
    * Toggle the expansion of the navigation menu.
    * @returns The toggled result.
    */
-  toggleExpanded(): boolean{
+  toggleExpanded(): boolean {
     this.isExpanded = !this.isExpanded;
     return this.isExpanded;
   }
@@ -29,7 +30,7 @@ export class HamburgerNavigationBarComponent implements OnInit {
   /**
    * Logs out the user. Clears the token and navigates to login screen.
    */
-  logout(){
+  logout() {
     this.authService.clearToken();
     this.router.navigate(['/auth/login']);
   }

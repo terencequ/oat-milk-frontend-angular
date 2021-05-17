@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { UserService } from '../api/backend';
+import {Injectable} from '@angular/core';
+import {UserService} from '../api/backend';
 
-const TOKEN_KEY = "auth-token";
+const TOKEN_KEY = 'auth-token';
 
 /**
  * Handles and manipulates auth JWT in local storage.
@@ -11,7 +11,8 @@ const TOKEN_KEY = "auth-token";
 })
 export class AuthService {
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService) {
+  }
 
   /**
    * Checks with the backend if this user is still authenticated.
@@ -19,9 +20,9 @@ export class AuthService {
    */
   public async isAuthenticated(): Promise<boolean> {
     try {
-      await this.userService.userProfileGet("body").toPromise();
+      await this.userService.userProfileGet('body').toPromise();
       return true;
-    } catch(error){
+    } catch (error) {
       return false;
     }
   }
@@ -39,13 +40,13 @@ export class AuthService {
    * @param token JWT token
    */
   public getToken(): string {
-    return localStorage.getItem(TOKEN_KEY) ?? "";
+    return localStorage.getItem(TOKEN_KEY) ?? '';
   }
 
   /**
    * This will remove the user's ability to authenticate.
    */
   public clearToken(): void {
-    localStorage.setItem(TOKEN_KEY, "");
+    localStorage.setItem(TOKEN_KEY, '');
   }
 }

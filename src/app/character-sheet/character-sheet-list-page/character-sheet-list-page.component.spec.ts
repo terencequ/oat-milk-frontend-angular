@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { CharacterSheetListPageComponent } from './character-sheet-list-page.component';
+import {CharacterSheetListPageComponent} from './character-sheet-list-page.component';
 
 describe('CharacterSheetListPageComponent', () => {
   let component: CharacterSheetListPageComponent;
@@ -8,9 +8,9 @@ describe('CharacterSheetListPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CharacterSheetListPageComponent ]
+      declarations: [CharacterSheetListPageComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

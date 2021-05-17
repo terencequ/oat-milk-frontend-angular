@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { AntiAuthGuardService } from './anti-auth-guard.service';
+import {AntiAuthGuardService} from './anti-auth-guard.service';
 
 describe('AntiAuthGuardService', () => {
   let service: AntiAuthGuardService;

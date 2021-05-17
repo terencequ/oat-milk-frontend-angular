@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { AuthService } from 'src/app/auth/auth.service';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {AuthService} from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-top-navigation-bar',
@@ -10,7 +10,8 @@ import { AuthService } from 'src/app/auth/auth.service';
 export class TopNavigationBarComponent implements OnInit {
 
   constructor(private router: Router,
-    private authService: AuthService) { }
+              private authService: AuthService) {
+  }
 
   ngOnInit(): void {
   }
@@ -18,7 +19,7 @@ export class TopNavigationBarComponent implements OnInit {
   /**
    * Logs out the user. Clears the token and navigates to login screen.
    */
-  logout(){
+  logout() {
     this.authService.clearToken();
     this.router.navigate(['/auth/login']);
   }

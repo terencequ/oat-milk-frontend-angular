@@ -1,5 +1,4 @@
-import { NgStyle } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-logo',
@@ -7,10 +6,11 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./logo.component.scss']
 })
 export class LogoComponent implements OnInit {
-  @Input() scale: number = 1;
-  @Input() showImage: boolean = true;
+  @Input() scale = 1;
+  @Input() showImage = true;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

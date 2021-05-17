@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { TopNavigationBarComponent } from './top-navigation-bar.component';
+import {TopNavigationBarComponent} from './top-navigation-bar.component';
 
 describe('TopNavigationBarComponent', () => {
   let component: TopNavigationBarComponent;
@@ -8,9 +8,9 @@ describe('TopNavigationBarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TopNavigationBarComponent ]
+      declarations: [TopNavigationBarComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

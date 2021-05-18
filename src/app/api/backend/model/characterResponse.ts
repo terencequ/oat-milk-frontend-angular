@@ -29,6 +29,7 @@ export interface CharacterResponse {
     medicine?: boolean;
     nature?: boolean;
     perception?: boolean;
+    performance?: boolean;
     religion?: boolean;
     sleightOfHand?: boolean;
     stealth?: boolean;

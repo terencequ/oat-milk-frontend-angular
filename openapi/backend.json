@@ -1993,6 +1993,9 @@
           "perception": {
             "type": "boolean"
           },
+          "performance": {
+            "type": "boolean"
+          },
           "religion": {
             "type": "boolean"
           },

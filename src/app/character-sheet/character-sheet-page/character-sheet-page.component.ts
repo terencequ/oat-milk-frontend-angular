@@ -50,7 +50,7 @@ export class CharacterSheetPageComponent implements OnInit {
         medicine: sheet.medicine ?? false,
         nature: sheet.nature ?? false,
         perception: sheet.perception ?? false,
-        performance: sheet.performance ?? false, // sheet.performance ?? false,
+        performance: sheet.performance ?? false,
         religion: sheet.religion ?? false,
         sleightOfHand: sheet.sleightOfHand ?? false,
         stealth: sheet.stealth ?? false,

@@ -510,17 +510,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/AbilityResponse"
+                  "$ref": "#/components/schemas/CharacterResponse"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/AbilityResponse"
+                  "$ref": "#/components/schemas/CharacterResponse"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/AbilityResponse"
+                  "$ref": "#/components/schemas/CharacterResponse"
                 }
               }
             }
@@ -601,17 +601,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/EffectResponsePageResponse"
+                  "$ref": "#/components/schemas/CharacterResponsePageResponse"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/EffectResponsePageResponse"
+                  "$ref": "#/components/schemas/CharacterResponsePageResponse"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/EffectResponsePageResponse"
+                  "$ref": "#/components/schemas/CharacterResponsePageResponse"
                 }
               }
             }
@@ -661,17 +661,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/EffectResponse"
+                  "$ref": "#/components/schemas/CharacterResponse"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/EffectResponse"
+                  "$ref": "#/components/schemas/CharacterResponse"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/EffectResponse"
+                  "$ref": "#/components/schemas/CharacterResponse"
                 }
               }
             }
@@ -740,17 +740,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/EffectResponse"
+                  "$ref": "#/components/schemas/CharacterResponse"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/EffectResponse"
+                  "$ref": "#/components/schemas/CharacterResponse"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/EffectResponse"
+                  "$ref": "#/components/schemas/CharacterResponse"
                 }
               }
             }
@@ -819,7 +819,7 @@
         }
       }
     },
-    "/Character/{id}/Action/SetupAttributes": {
+    "/Character/{id}/Action/ResetCharacter": {
       "post": {
         "tags": [
           "Character"
@@ -837,7 +837,24 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CharacterResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CharacterResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CharacterResponse"
+                }
+              }
+            }
           },
           "400": {
             "description": "Bad Request",
@@ -889,7 +906,24 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CharacterResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CharacterResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CharacterResponse"
+                }
+              }
+            }
           },
           "400": {
             "description": "Bad Request",
@@ -1879,6 +1913,182 @@
         },
         "additionalProperties": false
       },
+      "AttributeResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "baseValue": {
+            "type": "number",
+            "format": "double"
+          },
+          "currentValue": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CharacterResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "experience": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "attributes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AttributeResponse"
+            },
+            "nullable": true
+          },
+          "acrobatics": {
+            "type": "boolean"
+          },
+          "animalHandling": {
+            "type": "boolean"
+          },
+          "arcana": {
+            "type": "boolean"
+          },
+          "athletics": {
+            "type": "boolean"
+          },
+          "deception": {
+            "type": "boolean"
+          },
+          "history": {
+            "type": "boolean"
+          },
+          "insight": {
+            "type": "boolean"
+          },
+          "intimidation": {
+            "type": "boolean"
+          },
+          "investigation": {
+            "type": "boolean"
+          },
+          "medicine": {
+            "type": "boolean"
+          },
+          "nature": {
+            "type": "boolean"
+          },
+          "perception": {
+            "type": "boolean"
+          },
+          "religion": {
+            "type": "boolean"
+          },
+          "sleightOfHand": {
+            "type": "boolean"
+          },
+          "stealth": {
+            "type": "boolean"
+          },
+          "survival": {
+            "type": "boolean"
+          },
+          "personalityTraits": {
+            "type": "string",
+            "nullable": true
+          },
+          "ideals": {
+            "type": "string",
+            "nullable": true
+          },
+          "bonds": {
+            "type": "string",
+            "nullable": true
+          },
+          "flaws": {
+            "type": "string",
+            "nullable": true
+          },
+          "backstory": {
+            "type": "string",
+            "nullable": true
+          },
+          "alliesAndOrganisations": {
+            "type": "string",
+            "nullable": true
+          },
+          "appearance": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdDateTimeUtc": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedDateTimeUtc": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CharacterResponsePageResponse": {
+        "type": "object",
+        "properties": {
+          "pageIndex": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "hasPreviousPage": {
+            "type": "boolean"
+          },
+          "hasNextPage": {
+            "type": "boolean"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CharacterResponse"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "EffectRequest": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "EffectResponsePageResponse": {
         "type": "object",
         "properties": {
@@ -1909,16 +2119,6 @@
             "items": {
               "$ref": "#/components/schemas/EffectResponse"
             },
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "EffectRequest": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
             "nullable": true
           }
         },

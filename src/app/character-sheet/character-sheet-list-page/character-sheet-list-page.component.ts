@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {CharacterSheetListModel} from '../models/character-sheet-list-model';
+import {CharacterResponse, CharacterService, EffectResponsePageResponse, ErrorResponse} from '../../api/backend';
 
 @Component({
   selector: 'app-character-sheet-list-page',
@@ -7,10 +9,25 @@ import {Component, OnInit} from '@angular/core';
 })
 export class CharacterSheetListPageComponent implements OnInit {
 
-  constructor() {
+  characterSheets: CharacterSheetListModel[] = [] as CharacterSheetListModel[];
+
+  constructor(private characterService: CharacterService) {
   }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    try {
+      const result: EffectResponsePageResponse = await this.characterService.characterGet().toPromise();
+      this.characterSheets = result.items?.map( (element: CharacterResponse) => {
+        return {
+          id: element.id,
+          name: element.name,
+          experience: element.experience
+        } as CharacterSheetListModel;
+      }) ?? [];
+    } catch (error) {
+      const errorResponse = error.error as ErrorResponse;
+      console.warn(errorResponse.message);
+    }
   }
 
 }

@@ -9,11 +9,16 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { CharacterResponse } from './characterResponse';
 
 
-export interface ErrorResponse { 
-    type?: string | null;
-    message?: string | null;
-    stackTrace?: string | null;
+export interface CharacterResponsePageResponse { 
+    pageIndex?: number;
+    pageSize?: number;
+    totalCount?: number;
+    totalPages?: number;
+    hasPreviousPage?: boolean;
+    hasNextPage?: boolean;
+    items?: Array<CharacterResponse> | null;
 }
 

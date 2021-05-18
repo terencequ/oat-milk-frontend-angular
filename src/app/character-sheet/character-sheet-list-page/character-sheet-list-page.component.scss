@@ -1,0 +1,34 @@
+@import "../../../assets/colors";
+
+$list-width: 1200px;
+$list-max-width: 95%;
+$card-width: 300px;
+$card-max-width: 95%;
+$card-height: 200px;
+
+.page {
+  margin-left: auto;
+  margin-right: auto;
+  width: $list-width;
+  max-width: $list-max-width;
+}
+
+.character-card-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.character-card {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 20px;
+  width: $card-width;
+  max-width: $card-max-width;
+  height: $card-height;
+  background: $background-color-emphasized;
+  p {
+    height: 10%;
+  }
+}

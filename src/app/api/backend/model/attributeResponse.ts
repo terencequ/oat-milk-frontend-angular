@@ -11,9 +11,10 @@
  */
 
 
-export interface ErrorResponse { 
+export interface AttributeResponse { 
+    id?: string;
     type?: string | null;
-    message?: string | null;
-    stackTrace?: string | null;
+    baseValue?: number;
+    currentValue?: number;
 }
 

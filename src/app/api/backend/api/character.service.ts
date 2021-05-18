@@ -17,10 +17,9 @@ import { HttpClient, HttpHeaders, HttpParams,
 import { CustomHttpParameterCodec }                          from '../encoder';
 import { Observable }                                        from 'rxjs';
 
-import { AbilityResponse } from '../model/models';
 import { CharacterRequest } from '../model/models';
-import { EffectResponse } from '../model/models';
-import { EffectResponsePageResponse } from '../model/models';
+import { CharacterResponse } from '../model/models';
+import { CharacterResponsePageResponse } from '../model/models';
 import { ErrorResponse } from '../model/models';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -97,9 +96,9 @@ export class CharacterService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public characterGet(searchByName?: string, sortColumnName?: string, sortAscending?: boolean, pageIndex?: number, pageSize?: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<EffectResponsePageResponse>;
-    public characterGet(searchByName?: string, sortColumnName?: string, sortAscending?: boolean, pageIndex?: number, pageSize?: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<HttpResponse<EffectResponsePageResponse>>;
-    public characterGet(searchByName?: string, sortColumnName?: string, sortAscending?: boolean, pageIndex?: number, pageSize?: number, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<HttpEvent<EffectResponsePageResponse>>;
+    public characterGet(searchByName?: string, sortColumnName?: string, sortAscending?: boolean, pageIndex?: number, pageSize?: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<CharacterResponsePageResponse>;
+    public characterGet(searchByName?: string, sortColumnName?: string, sortAscending?: boolean, pageIndex?: number, pageSize?: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<HttpResponse<CharacterResponsePageResponse>>;
+    public characterGet(searchByName?: string, sortColumnName?: string, sortAscending?: boolean, pageIndex?: number, pageSize?: number, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<HttpEvent<CharacterResponsePageResponse>>;
     public characterGet(searchByName?: string, sortColumnName?: string, sortAscending?: boolean, pageIndex?: number, pageSize?: number, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: this.encoder});
@@ -146,7 +145,7 @@ export class CharacterService {
             responseType = 'text';
         }
 
-        return this.httpClient.get<EffectResponsePageResponse>(`${this.configuration.basePath}/Character`,
+        return this.httpClient.get<CharacterResponsePageResponse>(`${this.configuration.basePath}/Character`,
             {
                 params: queryParameters,
                 responseType: <any>responseType,
@@ -164,9 +163,9 @@ export class CharacterService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public characterIdActionApplyAbilityAsTargetAbilityIdPost(id: string, abilityId: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<any>;
-    public characterIdActionApplyAbilityAsTargetAbilityIdPost(id: string, abilityId: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<HttpResponse<any>>;
-    public characterIdActionApplyAbilityAsTargetAbilityIdPost(id: string, abilityId: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<HttpEvent<any>>;
+    public characterIdActionApplyAbilityAsTargetAbilityIdPost(id: string, abilityId: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<CharacterResponse>;
+    public characterIdActionApplyAbilityAsTargetAbilityIdPost(id: string, abilityId: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<HttpResponse<CharacterResponse>>;
+    public characterIdActionApplyAbilityAsTargetAbilityIdPost(id: string, abilityId: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<HttpEvent<CharacterResponse>>;
     public characterIdActionApplyAbilityAsTargetAbilityIdPost(id: string, abilityId: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling characterIdActionApplyAbilityAsTargetAbilityIdPost.');
@@ -197,7 +196,7 @@ export class CharacterService {
             responseType = 'text';
         }
 
-        return this.httpClient.post<any>(`${this.configuration.basePath}/Character/${encodeURIComponent(String(id))}/Action/ApplyAbilityAsTarget/${encodeURIComponent(String(abilityId))}`,
+        return this.httpClient.post<CharacterResponse>(`${this.configuration.basePath}/Character/${encodeURIComponent(String(id))}/Action/ApplyAbilityAsTarget/${encodeURIComponent(String(abilityId))}`,
             null,
             {
                 responseType: <any>responseType,
@@ -214,12 +213,12 @@ export class CharacterService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public characterIdActionSetupAttributesPost(id: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<any>;
-    public characterIdActionSetupAttributesPost(id: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<HttpResponse<any>>;
-    public characterIdActionSetupAttributesPost(id: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<HttpEvent<any>>;
-    public characterIdActionSetupAttributesPost(id: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<any> {
+    public characterIdActionResetCharacterPost(id: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<CharacterResponse>;
+    public characterIdActionResetCharacterPost(id: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<HttpResponse<CharacterResponse>>;
+    public characterIdActionResetCharacterPost(id: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<HttpEvent<CharacterResponse>>;
+    public characterIdActionResetCharacterPost(id: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<any> {
         if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling characterIdActionSetupAttributesPost.');
+            throw new Error('Required parameter id was null or undefined when calling characterIdActionResetCharacterPost.');
         }
 
         let headers = this.defaultHeaders;
@@ -244,7 +243,7 @@ export class CharacterService {
             responseType = 'text';
         }
 
-        return this.httpClient.post<any>(`${this.configuration.basePath}/Character/${encodeURIComponent(String(id))}/Action/SetupAttributes`,
+        return this.httpClient.post<CharacterResponse>(`${this.configuration.basePath}/Character/${encodeURIComponent(String(id))}/Action/ResetCharacter`,
             null,
             {
                 responseType: <any>responseType,
@@ -308,9 +307,9 @@ export class CharacterService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public characterIdPut(id: string, characterRequest?: CharacterRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<EffectResponse>;
-    public characterIdPut(id: string, characterRequest?: CharacterRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<HttpResponse<EffectResponse>>;
-    public characterIdPut(id: string, characterRequest?: CharacterRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<HttpEvent<EffectResponse>>;
+    public characterIdPut(id: string, characterRequest?: CharacterRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<CharacterResponse>;
+    public characterIdPut(id: string, characterRequest?: CharacterRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<HttpResponse<CharacterResponse>>;
+    public characterIdPut(id: string, characterRequest?: CharacterRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<HttpEvent<CharacterResponse>>;
     public characterIdPut(id: string, characterRequest?: CharacterRequest, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling characterIdPut.');
@@ -349,7 +348,7 @@ export class CharacterService {
             responseType = 'text';
         }
 
-        return this.httpClient.put<EffectResponse>(`${this.configuration.basePath}/Character/${encodeURIComponent(String(id))}`,
+        return this.httpClient.put<CharacterResponse>(`${this.configuration.basePath}/Character/${encodeURIComponent(String(id))}`,
             characterRequest,
             {
                 responseType: <any>responseType,
@@ -366,9 +365,9 @@ export class CharacterService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public characterNameGet(name: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<EffectResponse>;
-    public characterNameGet(name: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<HttpResponse<EffectResponse>>;
-    public characterNameGet(name: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<HttpEvent<EffectResponse>>;
+    public characterNameGet(name: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<CharacterResponse>;
+    public characterNameGet(name: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<HttpResponse<CharacterResponse>>;
+    public characterNameGet(name: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<HttpEvent<CharacterResponse>>;
     public characterNameGet(name: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<any> {
         if (name === null || name === undefined) {
             throw new Error('Required parameter name was null or undefined when calling characterNameGet.');
@@ -396,7 +395,7 @@ export class CharacterService {
             responseType = 'text';
         }
 
-        return this.httpClient.get<EffectResponse>(`${this.configuration.basePath}/Character/${encodeURIComponent(String(name))}`,
+        return this.httpClient.get<CharacterResponse>(`${this.configuration.basePath}/Character/${encodeURIComponent(String(name))}`,
             {
                 responseType: <any>responseType,
                 withCredentials: this.configuration.withCredentials,
@@ -412,9 +411,9 @@ export class CharacterService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public characterPost(characterRequest?: CharacterRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<AbilityResponse>;
-    public characterPost(characterRequest?: CharacterRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<HttpResponse<AbilityResponse>>;
-    public characterPost(characterRequest?: CharacterRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<HttpEvent<AbilityResponse>>;
+    public characterPost(characterRequest?: CharacterRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<CharacterResponse>;
+    public characterPost(characterRequest?: CharacterRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<HttpResponse<CharacterResponse>>;
+    public characterPost(characterRequest?: CharacterRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<HttpEvent<CharacterResponse>>;
     public characterPost(characterRequest?: CharacterRequest, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json'}): Observable<any> {
 
         let headers = this.defaultHeaders;
@@ -450,7 +449,7 @@ export class CharacterService {
             responseType = 'text';
         }
 
-        return this.httpClient.post<AbilityResponse>(`${this.configuration.basePath}/Character`,
+        return this.httpClient.post<CharacterResponse>(`${this.configuration.basePath}/Character`,
             characterRequest,
             {
                 responseType: <any>responseType,

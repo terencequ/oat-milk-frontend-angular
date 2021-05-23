@@ -819,6 +819,94 @@
         }
       }
     },
+    "/Character/{id}/Attribute/{attributeType}": {
+      "put": {
+        "tags": [
+          "Character"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "attributeType",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AttributeRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AttributeRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AttributeRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AttributeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AttributeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AttributeResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/Character/{id}/Action/ResetCharacter": {
       "post": {
         "tags": [
@@ -1521,6 +1609,217 @@
         }
       }
     },
+    "/Level/{name}": {
+      "get": {
+        "tags": [
+          "Level"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/LevelResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LevelResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LevelResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Level": {
+      "get": {
+        "tags": [
+          "Level"
+        ],
+        "parameters": [
+          {
+            "name": "SearchByName",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "SortColumnName",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "SortAscending",
+            "in": "query",
+            "schema": {
+              "type": "boolean",
+              "nullable": true
+            }
+          },
+          {
+            "name": "PageIndex",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "nullable": true
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/LevelResponsePageResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LevelResponsePageResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LevelResponsePageResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Level/setup": {
+      "post": {
+        "tags": [
+          "Level"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/LevelResponse"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/LevelResponse"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/LevelResponse"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/Ping": {
       "get": {
         "tags": [
@@ -1909,6 +2208,89 @@
           "name": {
             "type": "string",
             "nullable": true
+          },
+          "experience": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "acrobatics": {
+            "type": "boolean"
+          },
+          "animalHandling": {
+            "type": "boolean"
+          },
+          "arcana": {
+            "type": "boolean"
+          },
+          "athletics": {
+            "type": "boolean"
+          },
+          "deception": {
+            "type": "boolean"
+          },
+          "history": {
+            "type": "boolean"
+          },
+          "insight": {
+            "type": "boolean"
+          },
+          "intimidation": {
+            "type": "boolean"
+          },
+          "investigation": {
+            "type": "boolean"
+          },
+          "medicine": {
+            "type": "boolean"
+          },
+          "nature": {
+            "type": "boolean"
+          },
+          "perception": {
+            "type": "boolean"
+          },
+          "performance": {
+            "type": "boolean"
+          },
+          "religion": {
+            "type": "boolean"
+          },
+          "sleightOfHand": {
+            "type": "boolean"
+          },
+          "stealth": {
+            "type": "boolean"
+          },
+          "survival": {
+            "type": "boolean"
+          },
+          "personalityTraits": {
+            "type": "string",
+            "nullable": true
+          },
+          "ideals": {
+            "type": "string",
+            "nullable": true
+          },
+          "bonds": {
+            "type": "string",
+            "nullable": true
+          },
+          "flaws": {
+            "type": "string",
+            "nullable": true
+          },
+          "backstory": {
+            "type": "string",
+            "nullable": true
+          },
+          "alliesAndOrganisations": {
+            "type": "string",
+            "nullable": true
+          },
+          "appearance": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -1916,10 +2298,6 @@
       "AttributeResponse": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "string",
-            "format": "uuid"
-          },
           "type": {
             "type": "string",
             "nullable": true
@@ -2082,6 +2460,20 @@
         },
         "additionalProperties": false
       },
+      "AttributeRequest": {
+        "type": "object",
+        "properties": {
+          "baseValue": {
+            "type": "number",
+            "format": "double"
+          },
+          "currentValue": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
       "EffectRequest": {
         "type": "object",
         "properties": {
@@ -2140,6 +2532,63 @@
           },
           "operation": {
             "$ref": "#/components/schemas/ModifierOperation"
+          }
+        },
+        "additionalProperties": false
+      },
+      "LevelResponse": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "number": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "experienceRequirement": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "proficiencyBonus": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "LevelResponsePageResponse": {
+        "type": "object",
+        "properties": {
+          "pageIndex": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "hasPreviousPage": {
+            "type": "boolean"
+          },
+          "hasNextPage": {
+            "type": "boolean"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LevelResponse"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false

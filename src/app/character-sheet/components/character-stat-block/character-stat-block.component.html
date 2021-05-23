@@ -1,0 +1,3 @@
+<div class="stat-block">
+  <app-character-stat *ngFor="let statName of getStatNames()" [statLabel]="statName" [statValue]="getStatValue(statName)" [statModifier]="getStatModifier(statName)"></app-character-stat>
+</div>

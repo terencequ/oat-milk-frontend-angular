@@ -1,0 +1,27 @@
+@import "../../../../assets/colors";
+
+$stat-width: 100px;
+$stat-height: 100px;
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: $background-color-emphasized;
+  margin: 5px;
+  width: $stat-width;
+  height: $stat-height;
+  .stat-label {
+    padding-top: 0.2rem;
+    font-size: 0.7rem;
+    max-height: 25%;
+  }
+  .stat-modifier {
+    padding-top: 0.7rem;
+    font-size: 1.6rem;
+    height: 50%;
+  }
+  .stat-value {
+    height: 25%;
+  }
+}

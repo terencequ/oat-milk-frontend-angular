@@ -1,30 +1,8 @@
-export interface CharacterSheetModel {
+import {CharacterSheetStatsModel} from './character-sheet-stats-model';
+import {CharacterSheetProficienciesModel} from './character-sheet-proficiencies-model';
+import {CharacterSheetLevelModel} from './character-sheet-level-model';
+
+export interface CharacterSheetModel extends CharacterSheetLevelModel, CharacterSheetStatsModel, CharacterSheetProficienciesModel {
   id: string;
   name: string;
-  experience: number;
-
-  strength: number;
-  dexterity: number;
-  constitution: number;
-  intelligence: number;
-  wisdom: number;
-  charisma: number;
-
-  acrobatics: boolean;
-  animalHandling: boolean;
-  arcana: boolean;
-  athletics: boolean;
-  deception: boolean;
-  history: boolean;
-  insight: boolean;
-  intimidation: boolean;
-  investigation: boolean;
-  medicine: boolean;
-  nature: boolean;
-  perception: boolean;
-  performance: boolean;
-  religion: boolean;
-  sleightOfHand: boolean;
-  stealth: boolean;
-  survival: boolean;
 }

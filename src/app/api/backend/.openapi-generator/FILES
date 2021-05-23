@@ -1,10 +1,12 @@
 .gitignore
+.openapi-generator-ignore
 README.md
 api.module.ts
 api/ability.service.ts
 api/api.ts
 api/character.service.ts
 api/effect.service.ts
+api/level.service.ts
 api/ping.service.ts
 api/user.service.ts
 configuration.ts
@@ -14,6 +16,7 @@ index.ts
 model/abilityRequest.ts
 model/abilityResponse.ts
 model/abilityResponsePageResponse.ts
+model/attributeRequest.ts
 model/attributeResponse.ts
 model/authTokenResponse.ts
 model/characterRequest.ts
@@ -23,6 +26,8 @@ model/effectRequest.ts
 model/effectResponse.ts
 model/effectResponsePageResponse.ts
 model/errorResponse.ts
+model/levelResponse.ts
+model/levelResponsePageResponse.ts
 model/models.ts
 model/modifierOperation.ts
 model/modifierRequest.ts

@@ -1,7 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {AttributeResponse, CharacterResponse, CharacterService, ErrorResponse} from '../../api/backend';
+import {
+  AttributeResponse,
+  CharacterResponse,
+  CharacterService,
+  ErrorResponse,
+  LevelResponsePageResponse,
+  LevelService
+} from '../../api/backend';
 import {CharacterSheetModel} from '../models/character-sheet-model';
+import {CharacterSheetStatsModel} from '../models/character-sheet-stats-model';
+import {CharacterSheetProficienciesModel} from '../models/character-sheet-proficiencies-model';
 
 
 @Component({
@@ -14,7 +23,7 @@ export class CharacterSheetPageComponent implements OnInit {
   characterSheetModel: CharacterSheetModel | null = null;
   overallError: string | null = null;
 
-  constructor(private route: ActivatedRoute, private characterService: CharacterService) { }
+  constructor(private route: ActivatedRoute, private characterService: CharacterService, private levelService: LevelService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(async params => {
@@ -26,43 +35,76 @@ export class CharacterSheetPageComponent implements OnInit {
     try {
       console.log(`Showing character ${name}`);
       const sheet = await this.characterService.characterNameGet(name).toPromise();
+      const levels = await this.levelService.levelGet().toPromise();
       this.characterSheetModel = {
         id: sheet.id ?? '',
         name: sheet.name ?? '',
-        experience: sheet.experience ?? 0,
-
-        strength: this.getAttribute(sheet, 'strength')?.baseValue ?? 0,
-        dexterity: this.getAttribute(sheet, 'dexterity')?.baseValue ?? 0,
-        constitution: this.getAttribute(sheet, 'constitution')?.baseValue ?? 0,
-        intelligence: this.getAttribute(sheet, 'intelligence')?.baseValue ?? 0,
-        wisdom: this.getAttribute(sheet, 'wisdom')?.baseValue ?? 0,
-        charisma: this.getAttribute(sheet, 'charisma')?.baseValue ?? 0,
-
-        acrobatics: sheet.acrobatics ?? false,
-        animalHandling: sheet.animalHandling ?? false,
-        arcana: sheet.arcana ?? false,
-        athletics: sheet.athletics ?? false,
-        deception: sheet.deception ?? false,
-        history: sheet.history ?? false,
-        insight: sheet.insight ?? false,
-        intimidation: sheet.intimidation ?? false,
-        investigation: sheet.investigation ?? false,
-        medicine: sheet.medicine ?? false,
-        nature: sheet.nature ?? false,
-        perception: sheet.perception ?? false,
-        performance: sheet.performance ?? false,
-        religion: sheet.religion ?? false,
-        sleightOfHand: sheet.sleightOfHand ?? false,
-        stealth: sheet.stealth ?? false,
-        survival: sheet.survival ?? false,
-      };
+      } as CharacterSheetModel;
+      this.populateCharacterSheetModelLevel(sheet, levels);
+      this.populateCharacterSheetModelStats(sheet);
+      this.populateCharacterSheetModelProficiencies(sheet);
     } catch (error) {
       const errorResponse = error as ErrorResponse;
       this.overallError = errorResponse.message ?? 'Something unexpected went wrong.';
     }
   }
 
-  getAttribute(sheet: CharacterResponse, type: string): AttributeResponse | null {
-    return sheet.attributes?.find(attr => attr.type === 'strength') ?? null;
+  getAttribute(sheet: CharacterResponse, type: string): number {
+    return sheet.attributes?.find(attr => attr.type?.toLowerCase() === type.toLowerCase())?.baseValue ?? 0;
+  }
+
+  populateCharacterSheetModelLevel(sheet: CharacterResponse, levels: LevelResponsePageResponse): void{
+    const levelArray = levels.items?.sort((a, b) => (b.experienceRequirement ?? 0) - (a.experienceRequirement ?? 0)) ?? [];
+    const experience = sheet.experience ?? 0;
+
+    let level: number | null = null;
+    let previousLevelExperienceRequirement: number | null = null;
+    let currentLevelExperienceRequirement: number | null = null;
+    let nextLevelExperienceRequirement: number | null = null;
+    for (const levelResponse of levelArray) {
+      const experienceRequirement = levelResponse?.experienceRequirement ?? 0;
+      // Because the array is sorted, first element that exceeds exp requirement is the current level
+      if (experience >= experienceRequirement) {
+        level = levelResponse.number ?? 1;
+        const previousLevel = level - 1;
+        previousLevelExperienceRequirement = levelArray.find(l => l.number === previousLevel)?.experienceRequirement ?? null;
+        const currentLevel = level;
+        currentLevelExperienceRequirement = levelArray.find(l => l.number === currentLevel)?.experienceRequirement ?? null;
+        const nextLevel = level + 1;
+        nextLevelExperienceRequirement = levelArray.find(l => l.number === nextLevel)?.experienceRequirement ?? null;
+        break;
+      }
+    }
+
+    if (this.characterSheetModel) {
+      this.characterSheetModel.level = level ?? 1;
+      this.characterSheetModel.previousLevelExperienceRequirement = previousLevelExperienceRequirement;
+      this.characterSheetModel.currentLevelExperienceRequirement = currentLevelExperienceRequirement;
+      this.characterSheetModel.nextLevelExperienceRequirement = nextLevelExperienceRequirement;
+      this.characterSheetModel.experience = experience;
+    }
+  }
+
+  populateCharacterSheetModelStats(sheet: CharacterResponse): void{
+    const statNames: Array<keyof CharacterSheetStatsModel> =
+      ['strength', 'dexterity', 'constitution', 'intelligence', 'wisdom', 'charisma'];
+    for (const name of statNames) {
+      if (this.characterSheetModel) {
+        this.characterSheetModel[name] = this.getAttribute(sheet, name);
+      }
+    }
+  }
+
+  populateCharacterSheetModelProficiencies(sheet: CharacterResponse): void{
+    const proficiencyNames: Array<keyof CharacterSheetProficienciesModel> =
+      ['acrobatics', 'animalHandling', 'arcana', 'athletics',
+        'deception', 'history', 'insight', 'intimidation',
+        'investigation', 'medicine', 'nature', 'perception',
+        'performance', 'religion', 'sleightOfHand', 'stealth', 'survival'];
+    for (const name of proficiencyNames) {
+      if (this.characterSheetModel) {
+        this.characterSheetModel[name] = sheet[name] ?? false;
+      }
+    }
   }
 }

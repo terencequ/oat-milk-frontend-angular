@@ -1,0 +1,11 @@
+@import "../../../assets/colors";
+
+.max {
+  width: 100%;
+  background-color: $progress-bar-max-color;
+}
+
+.current {
+  float: left;
+  background-color: $progress-bar-current-color;
+}

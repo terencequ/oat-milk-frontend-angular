@@ -9,11 +9,16 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { LevelResponse } from './levelResponse';
 
 
-export interface AttributeResponse { 
-    type?: string | null;
-    baseValue?: number;
-    currentValue?: number;
+export interface LevelResponsePageResponse { 
+    pageIndex?: number;
+    pageSize?: number;
+    totalCount?: number;
+    totalPages?: number;
+    hasPreviousPage?: boolean;
+    hasNextPage?: boolean;
+    items?: Array<LevelResponse> | null;
 }
 

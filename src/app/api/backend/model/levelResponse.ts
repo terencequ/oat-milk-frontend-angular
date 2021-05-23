@@ -11,9 +11,10 @@
  */
 
 
-export interface AttributeResponse { 
-    type?: string | null;
-    baseValue?: number;
-    currentValue?: number;
+export interface LevelResponse { 
+    name?: string | null;
+    number?: number;
+    experienceRequirement?: number;
+    proficiencyBonus?: number;
 }
 

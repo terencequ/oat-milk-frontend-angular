@@ -11,8 +11,7 @@
  */
 
 
-export interface AttributeResponse { 
-    type?: string | null;
+export interface AttributeRequest { 
     baseValue?: number;
     currentValue?: number;
 }

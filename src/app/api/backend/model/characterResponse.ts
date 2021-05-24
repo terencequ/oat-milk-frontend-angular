@@ -30,6 +30,7 @@ export interface CharacterResponse {
     nature?: boolean;
     perception?: boolean;
     performance?: boolean;
+    persuasion?: boolean;
     religion?: boolean;
     sleightOfHand?: boolean;
     stealth?: boolean;

@@ -100,7 +100,7 @@ export class CharacterSheetPageComponent implements OnInit {
       ['acrobatics', 'animalHandling', 'arcana', 'athletics',
         'deception', 'history', 'insight', 'intimidation',
         'investigation', 'medicine', 'nature', 'perception',
-        'performance', 'religion', 'sleightOfHand', 'stealth', 'survival'];
+        'performance', 'persuasion', 'religion', 'sleightOfHand', 'stealth', 'survival'];
     for (const name of proficiencyNames) {
       if (this.characterSheetModel) {
         this.characterSheetModel[name] = sheet[name] ?? false;

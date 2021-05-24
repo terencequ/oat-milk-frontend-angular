@@ -12,6 +12,7 @@ export interface CharacterSheetProficienciesModel {
   nature: boolean;
   perception: boolean;
   performance: boolean;
+  persuasion: boolean;
   religion: boolean;
   sleightOfHand: boolean;
   stealth: boolean;

@@ -1,7 +1,22 @@
-.stat-block {
-  border-style: solid;
+.experience-bar {
+  margin-bottom: 3%;
 }
-
-.proficiency-block {
-  border-style: solid;
+.nerd-numbers {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  .stat-block {
+    width: 25%;
+  }
+  .combat-block {
+    border-style: solid;
+    width: 44%;
+  }
+  .text-block {
+    border-style: solid;
+    width: 25%;
+  }
+  .combat-block {
+    margin: 0 3%;
+  }
 }

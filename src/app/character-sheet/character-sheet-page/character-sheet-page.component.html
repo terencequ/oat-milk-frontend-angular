@@ -1,28 +1,19 @@
 <div class="page">
   <div *ngIf="characterSheetModel != null">
     <h1>{{characterSheetModel.name}}</h1>
-    <app-character-experience-bar [characterSheetModel]="characterSheetModel"></app-character-experience-bar>
-    <div class="stat-block">
-      <app-character-stat-block [characterSheetModel]="characterSheetModel"></app-character-stat-block>
+    <div class="experience-bar">
+      <app-character-experience-bar [characterSheetModel]="characterSheetModel"></app-character-experience-bar>
     </div>
-    <div class="proficiency-block">
-      <p>Acrobatics {{characterSheetModel.acrobatics}}</p>
-      <p>Animal Handling {{characterSheetModel.animalHandling}}</p>
-      <p>Arcana {{characterSheetModel.arcana}}</p>
-      <p>Athletics {{characterSheetModel.athletics}}</p>
-      <p>Deception {{characterSheetModel.deception}}</p>
-      <p>History {{characterSheetModel.history}}</p>
-      <p>Insight {{characterSheetModel.insight}}</p>
-      <p>Intimidation{{characterSheetModel.intimidation}}</p>
-      <p>Investigation {{characterSheetModel.investigation}}</p>
-      <p>Medicine {{characterSheetModel.medicine}}</p>
-      <p>Nature {{characterSheetModel.nature}}</p>
-      <p>Perception {{characterSheetModel.perception}}</p>
-      <p>Performance {{characterSheetModel.performance}}</p>
-      <p>Religion {{characterSheetModel.religion}}</p>
-      <p>Sleight of Hand {{characterSheetModel.sleightOfHand}}</p>
-      <p>Stealth {{characterSheetModel.stealth}}</p>
-      <p>Survival {{characterSheetModel.survival}}</p>
+    <div class="nerd-numbers">
+      <div class="stat-block">
+        <app-character-stat-block [characterSheetModel]="characterSheetModel"></app-character-stat-block>
+      </div>
+      <div class="combat-block">
+
+      </div>
+      <div class="text-block">
+
+      </div>
     </div>
   </div>
 </div>

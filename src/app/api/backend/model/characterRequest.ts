@@ -27,6 +27,7 @@ export interface CharacterRequest {
     nature?: boolean;
     perception?: boolean;
     performance?: boolean;
+    persuasion?: boolean;
     religion?: boolean;
     sleightOfHand?: boolean;
     stealth?: boolean;

@@ -7,9 +7,10 @@ import {SharedModule} from '../shared/shared.module';
 import { CharacterExperienceBarComponent } from './components/character-experience-bar/character-experience-bar.component';
 import { CharacterStatComponent } from './components/character-stat/character-stat.component';
 import { CharacterStatBlockComponent } from './components/character-stat-block/character-stat-block.component';
+import { CharacterCombatBlockComponent } from './components/character-combat-block/character-combat-block.component';
 
 @NgModule({
-  declarations: [CharacterSheetListPageComponent, CharacterSheetPageComponent, CharacterExperienceBarComponent, CharacterStatComponent, CharacterStatBlockComponent],
+  declarations: [CharacterSheetListPageComponent, CharacterSheetPageComponent, CharacterExperienceBarComponent, CharacterStatComponent, CharacterStatBlockComponent, CharacterCombatBlockComponent],
   imports: [
     CommonModule,
     CharacterSheetRoutingModule,

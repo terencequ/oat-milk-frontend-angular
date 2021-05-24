@@ -29,7 +29,6 @@ export class CharacterExperienceBarComponent implements OnInit {
   getBarCurrent(): number {
     const experience = this.characterSheetModel?.experience ?? 0;
     const experienceFloor = this.characterSheetModel?.currentLevelExperienceRequirement ?? 0;
-
     return (experience - experienceFloor);
   }
 

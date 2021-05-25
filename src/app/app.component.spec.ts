@@ -1,9 +1,17 @@
 import {TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {AppComponent} from './app.component';
+import {Router} from '@angular/router';
+import {AuthService} from './auth/auth.service';
+import {of} from 'rxjs';
 
 describe('AppComponent', () => {
+  let routerMock: jasmine.SpyObj<Router>;
+  let authServiceMock: jasmine.SpyObj<AuthService>;
+
   beforeEach(async () => {
+    routerMock = jasmine.createSpyObj<Router>('Router', ['navigate'], {events: of()});
+    authServiceMock = jasmine.createSpyObj<AuthService>('AuthService', ['isAuthenticated']);
     await TestBed.configureTestingModule({
       imports: [
         RouterTestingModule
@@ -11,6 +19,10 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent
       ],
+      providers: [
+        { provide: Router, useValue: routerMock },
+        { provide: AuthService, useValue: authServiceMock }
+      ]
     }).compileComponents();
   });
 
@@ -26,10 +38,11 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('Oat Milk');
   });
 
-  it('should render title', () => {
+  it('should render container', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('oat-milk-frontend app is running!');
+    const lol = compiled.querySelector('.container');
+    expect(compiled.querySelector('.container')).toBeTruthy();
   });
 });

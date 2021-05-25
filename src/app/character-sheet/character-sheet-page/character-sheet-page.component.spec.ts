@@ -4,32 +4,15 @@ import {CharacterSheetPageComponent} from './character-sheet-page.component';
 import {CharacterResponse, CharacterService} from '../../api/backend';
 import {ActivatedRoute} from '@angular/router';
 import {Observable, of} from 'rxjs';
+import {CharacterSheetListPageComponent} from '../character-sheet-list-page/character-sheet-list-page.component';
 
 describe('CharacterSheetPageComponent', () => {
   let component: CharacterSheetPageComponent;
   let fixture: ComponentFixture<CharacterSheetPageComponent>;
-  let mockCharacterService;
 
   beforeEach(async () => {
-    mockCharacterService = jasmine.createSpyObj(['characterNameGet']);
-    mockCharacterService.characterNameGet.and.returnValue({
-      id: '3f93f1b9-cd3e-403d-ba22-135e0307b20c',
-      name: 'Jeff'
-    } as CharacterResponse);
     await TestBed.configureTestingModule({
-      declarations: [CharacterSheetPageComponent],
-      providers: [
-        {
-          provide: CharacterService, useValue: {
-            characterNameGet: {}
-          }
-        },
-        {
-          provide: ActivatedRoute, useValue: {
-            params: of([{name: null}])
-          }
-        }
-      ]
+      declarations: [CharacterSheetPageComponent]
     })
       .compileComponents();
   });

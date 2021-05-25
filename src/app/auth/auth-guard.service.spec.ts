@@ -18,8 +18,8 @@ describe('AuthGuardService', () => {
     routerMock = jasmine.createSpyObj<Router>('Router', ['navigate']);
     TestBed.configureTestingModule({
       providers: [
-        Router, {provide: Router, useValue: routerMock},
-        AuthService, {provide: AuthService, useValue: authServiceMock}
+        {provide: Router, useValue: routerMock},
+        {provide: AuthService, useValue: authServiceMock}
       ]
     });
     service = TestBed.inject(AuthGuardService);

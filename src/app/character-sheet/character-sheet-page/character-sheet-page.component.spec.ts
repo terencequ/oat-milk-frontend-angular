@@ -1,7 +1,9 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { CharacterSheetPageComponent } from './character-sheet-page.component';
+import {CharacterSheetPageComponent} from './character-sheet-page.component';
 import {CharacterResponse, CharacterService} from '../../api/backend';
+import {ActivatedRoute} from '@angular/router';
+import {Observable, of} from 'rxjs';
 
 describe('CharacterSheetPageComponent', () => {
   let component: CharacterSheetPageComponent;
@@ -15,10 +17,21 @@ describe('CharacterSheetPageComponent', () => {
       name: 'Jeff'
     } as CharacterResponse);
     await TestBed.configureTestingModule({
-      declarations: [ CharacterSheetPageComponent ],
-      providers: [ {provide: CharacterService, useValue: mockCharacterService } ]
+      declarations: [CharacterSheetPageComponent],
+      providers: [
+        {
+          provide: CharacterService, useValue: {
+            characterNameGet: {}
+          }
+        },
+        {
+          provide: ActivatedRoute, useValue: {
+            params: of([{name: null}])
+          }
+        }
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

@@ -73,12 +73,12 @@ export class LoginPageComponent implements OnInit {
 
       // Try to log in
       try {
-        const response = await this.userService.userLoginPost(loginRequest, 'body').toPromise();
-        this.authService.setToken(response.authToken ?? '');
+        const response = await this.userService.userLoginPost(loginRequest, 'response').toPromise();
+        this.authService.setToken(response.body?.authToken ?? '');
         await this.router.navigate(['/dashboard']);
       } catch (error) {
         const errorResponse = error.error as ErrorResponse;
-        this.errors.overall = errorResponse.message ?? 'An unexpected error has occurred.';
+        this.errors.overall = errorResponse?.message ?? 'An unexpected error has occurred.';
         this.authService.clearToken();
       }
     }

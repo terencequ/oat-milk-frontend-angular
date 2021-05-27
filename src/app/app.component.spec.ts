@@ -42,7 +42,6 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    const lol = compiled.querySelector('.container');
     expect(compiled.querySelector('.container')).toBeTruthy();
   });
 });

@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {UserService} from '../api/backend';
 
-const TOKEN_KEY = 'auth-token';
+export const TOKEN_KEY = 'auth-token';
 
 /**
  * Handles and manipulates auth JWT in local storage.

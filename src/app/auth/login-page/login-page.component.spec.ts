@@ -52,6 +52,7 @@ describe('LoginPageComponent', () => {
         await component.login(new MouseEvent('click'));
         expect(authServiceMock.setToken).toHaveBeenCalled();
       });
+
       it('should clear local storage token if user service returns error', async () => {
         localStorage.clear();
         userServiceMock.userLoginPost.and.returnValue(defer(() => Promise.reject(({

@@ -78,7 +78,7 @@ describe('AuthService', () => {
       localStorage.clear();
       localStorage.setItem(TOKEN_KEY, expectedToken);
       service.clearToken();
-      expect(localStorage.getItem(TOKEN_KEY)).toBe(null);
+      expect(localStorage.getItem(TOKEN_KEY)).toBe('');
     });
   });
 });

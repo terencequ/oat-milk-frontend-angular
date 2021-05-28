@@ -26,7 +26,7 @@ export class CharacterSheetListPageComponent implements OnInit {
       }) ?? [];
     } catch (error) {
       const errorResponse = error.error as ErrorResponse;
-      console.warn(errorResponse.message);
+      console.warn(errorResponse?.message ?? 'An unexpected error has occurred.');
     }
   }
 

@@ -40,7 +40,7 @@ export class RegisterPageComponent implements OnInit {
    * Validate the register form, and set the error messages.
    * @returns True if form is valid, False otherwise.
    */
-  validateForm() {
+  validateForm(): boolean{
     this.errors = {
       email: '',
       displayName: '',
@@ -97,12 +97,12 @@ export class RegisterPageComponent implements OnInit {
           displayName: value.displayName,
           password: value.password
         };
-        const response = await this.userService.userRegisterPost(registerRequest, 'body').toPromise();
-        this.authService.setToken(response.authToken ?? '');
+        const response = await this.userService.userRegisterPost(registerRequest, 'response').toPromise();
+        this.authService.setToken(response.body?.authToken ?? '');
         await this.router.navigate(['/dashboard']);
       } catch (error) {
         const errorResponse = error.error as ErrorResponse;
-        this.errors.overall = errorResponse.message ?? 'An unexpected error has occurred.';
+        this.errors.overall = errorResponse?.message ?? 'An unexpected error has occurred.';
         this.authService.clearToken();
       }
     }

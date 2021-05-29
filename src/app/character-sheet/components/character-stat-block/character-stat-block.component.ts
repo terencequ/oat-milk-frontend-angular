@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {CharacterSheetModel} from '../../models/character-sheet-model';
 import {CharacterSheetStatsModel} from '../../models/character-sheet-stats-model';
-import {CharacterSheetProficienciesModel} from '../../models/character-sheet-proficiencies-model';
+import {CharacterSheetSkillsModel} from '../../models/character-sheet-skills-model';
 import {CharacterSheetStatModel} from '../../models/character-sheet-stat-model';
 import {CharacterSheetProficiencyModel} from '../../models/character-sheet-proficiency-model';
 
@@ -42,7 +42,7 @@ export class CharacterStatBlockComponent implements OnInit {
   }
 
   getStatProficiencies(statName: keyof CharacterSheetStatsModel): Array<CharacterSheetProficiencyModel>{
-    let proficiencyNames: Array<keyof CharacterSheetProficienciesModel> = [];
+    let proficiencyNames: Array<keyof CharacterSheetSkillsModel> = [];
     switch (statName){
       case 'strength':
         proficiencyNames = ['athletics'];

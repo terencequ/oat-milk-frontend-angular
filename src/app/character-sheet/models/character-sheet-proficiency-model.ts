@@ -1,7 +1,7 @@
-import {CharacterSheetProficienciesModel} from './character-sheet-proficiencies-model';
+import {CharacterSheetSkillsModel} from './character-sheet-skills-model';
 
 export interface CharacterSheetProficiencyModel {
-  label: keyof CharacterSheetProficienciesModel;
+  label: keyof CharacterSheetSkillsModel;
   proficient: boolean;
   modifier: number;
 }

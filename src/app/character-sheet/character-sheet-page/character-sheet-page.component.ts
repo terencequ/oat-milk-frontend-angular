@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {
-  AttributeResponse,
   CharacterResponse,
   CharacterService,
   ErrorResponse,
@@ -10,7 +9,7 @@ import {
 } from '../../api/backend';
 import {CharacterSheetModel} from '../models/character-sheet-model';
 import {CharacterSheetStatsModel} from '../models/character-sheet-stats-model';
-import {CharacterSheetProficienciesModel} from '../models/character-sheet-proficiencies-model';
+import {CharacterSheetSkillsModel} from '../models/character-sheet-skills-model';
 
 
 @Component({
@@ -31,6 +30,10 @@ export class CharacterSheetPageComponent implements OnInit {
     });
   }
 
+  /**
+   * Update this page's view model for a character sheet.
+   * @param name
+   */
   async updateCharacterSheet(name: string): Promise<void>{
     try {
       console.log(`Showing character ${name}`);
@@ -42,7 +45,7 @@ export class CharacterSheetPageComponent implements OnInit {
       } as CharacterSheetModel;
       this.populateCharacterSheetModelLevel(sheet, levels);
       this.populateCharacterSheetModelStats(sheet);
-      this.populateCharacterSheetModelProficiencies(sheet);
+      this.populateCharacterSheetModelSkills(sheet);
     } catch (error) {
       const errorResponse = error as ErrorResponse;
       this.overallError = errorResponse.message ?? 'Something unexpected went wrong.';
@@ -53,6 +56,11 @@ export class CharacterSheetPageComponent implements OnInit {
     return sheet.attributes?.find(attr => attr.type?.toLowerCase() === type.toLowerCase())?.baseValue ?? 0;
   }
 
+  /**
+   * Populate character sheet level and experience information.
+   * @param sheet Character sheet response
+   * @param levels Level definitions response
+   */
   populateCharacterSheetModelLevel(sheet: CharacterResponse, levels: LevelResponsePageResponse): void{
     const levelArray = levels.items?.sort((a, b) => (b.experienceRequirement ?? 0) - (a.experienceRequirement ?? 0)) ?? [];
     const experience = sheet.experience ?? 0;
@@ -85,6 +93,10 @@ export class CharacterSheetPageComponent implements OnInit {
     }
   }
 
+  /**
+   * Populate the character sheet's stats.
+   * @param sheet Character sheet response
+   */
   populateCharacterSheetModelStats(sheet: CharacterResponse): void{
     const statNames: Array<keyof CharacterSheetStatsModel> =
       ['strength', 'dexterity', 'constitution', 'intelligence', 'wisdom', 'charisma'];
@@ -95,13 +107,17 @@ export class CharacterSheetPageComponent implements OnInit {
     }
   }
 
-  populateCharacterSheetModelProficiencies(sheet: CharacterResponse): void{
-    const proficiencyNames: Array<keyof CharacterSheetProficienciesModel> =
+  /**
+   * Populate the character sheet's skills.
+   * @param sheet Character sheet response
+   */
+  populateCharacterSheetModelSkills(sheet: CharacterResponse): void{
+    const skillNames: Array<keyof CharacterSheetSkillsModel> =
       ['acrobatics', 'animalHandling', 'arcana', 'athletics',
         'deception', 'history', 'insight', 'intimidation',
         'investigation', 'medicine', 'nature', 'perception',
         'performance', 'persuasion', 'religion', 'sleightOfHand', 'stealth', 'survival'];
-    for (const name of proficiencyNames) {
+    for (const name of skillNames) {
       if (this.characterSheetModel) {
         this.characterSheetModel[name] = sheet[name] ?? false;
       }

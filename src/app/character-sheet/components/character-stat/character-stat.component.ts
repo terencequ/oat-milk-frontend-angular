@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {CharacterSheetProficienciesModel} from '../../models/character-sheet-proficiencies-model';
+import {CharacterSheetSkillsModel} from '../../models/character-sheet-skills-model';
 import {CharacterSheetStatModel} from '../../models/character-sheet-stat-model';
 import {CharacterSheetProficiencyModel} from '../../models/character-sheet-proficiency-model';
 

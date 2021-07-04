@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CharacterSheetEditPageComponent } from './character-sheet-edit-page.component';
+import { CharacterSheetCreatePageComponent } from './character-sheet-create-page.component';
 
 describe('CharacterSheetEditPageComponent', () => {
-  let component: CharacterSheetEditPageComponent;
-  let fixture: ComponentFixture<CharacterSheetEditPageComponent>;
+  let component: CharacterSheetCreatePageComponent;
+  let fixture: ComponentFixture<CharacterSheetCreatePageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CharacterSheetEditPageComponent ]
+      declarations: [ CharacterSheetCreatePageComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CharacterSheetEditPageComponent);
+    fixture = TestBed.createComponent(CharacterSheetCreatePageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

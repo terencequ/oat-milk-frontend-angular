@@ -1,9 +1,12 @@
 <div class="page">
   <h1>Character Sheets</h1>
   <div class="character-card-list">
-    <a class="character-card" *ngFor="let characterSheet of characterSheets" [routerLink]="[characterSheet.name]">
+    <a class="character-card" *ngFor="let characterSheet of characterSheets" [routerLink]="['view/'+characterSheet.name]">
       <h2>{{characterSheet.name}}</h2>
       <p>Experience: {{characterSheet.experience}}</p>
+    </a>
+    <a class="character-card" [routerLink]="['new']">
+      <h2>New Character Sheet</h2>
     </a>
   </div>
 </div>

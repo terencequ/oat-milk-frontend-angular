@@ -1,10 +1,13 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {CharacterSheetListPageComponent} from './pages/character-sheet-list-page/character-sheet-list-page.component';
-import {CharacterSheetPageComponent} from './pages/character-sheet-page/character-sheet-page.component';
+import {CharacterSheetViewPageComponent} from './pages/character-sheet-view-page/character-sheet-view-page.component';
+import {CharacterSheetCreatePageComponent} from './pages/character-sheet-create-page/character-sheet-create-page.component';
 
 const routes: Routes = [
-  { path: ':name', component: CharacterSheetPageComponent },
+  { path: 'new', component: CharacterSheetCreatePageComponent },
+  { path: 'edit/:name', component: CharacterSheetCreatePageComponent },
+  { path: 'view/:name', component: CharacterSheetViewPageComponent },
   { path: '', component: CharacterSheetListPageComponent },
 ];
 

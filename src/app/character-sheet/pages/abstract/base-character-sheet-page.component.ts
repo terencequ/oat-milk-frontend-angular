@@ -1,6 +1,6 @@
 import {ActivatedRoute} from '@angular/router';
 import {CharacterResponse, CharacterService, ErrorResponse, LevelResponsePageResponse, LevelService} from '../../../api/backend';
-import {OnInit} from '@angular/core';
+import {Injectable, OnInit} from '@angular/core';
 import {CharacterSheetModel} from '../../models/character-sheet-model';
 import {CharacterSheetStatsModel} from '../../models/character-sheet-stats-model';
 import {CharacterSheetSkillsModel} from '../../models/character-sheet-skills-model';
@@ -9,17 +9,14 @@ import {CharacterSheetSkillsModel} from '../../models/character-sheet-skills-mod
  * Abstract class for any page that uses route parameters to retrieve character information.
  * Examples: Page to view one character, page to edit one character
  */
-export abstract class BaseCharacterSheetPage implements OnInit {
+@Injectable()
+export abstract class BaseCharacterSheetPage {
   characterSheetModel: CharacterSheetModel | null = null;
   overallError: string | null = null;
 
-  protected constructor(protected route: ActivatedRoute, protected characterService: CharacterService, protected levelService: LevelService) { }
-
-  ngOnInit(): void {
-    this.route.params.subscribe(async params => {
-      await this.updateCharacterSheet(params.name);
-    });
-  }
+  protected constructor(protected route: ActivatedRoute,
+                        protected characterService: CharacterService,
+                        protected levelService: LevelService) { }
 
   /**
    * Update this page's view model for a character sheet.

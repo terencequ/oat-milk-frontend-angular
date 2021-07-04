@@ -1,7 +1,7 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {TopNavigationBarComponent} from './top-navigation-bar.component';
-import {AuthService} from '../../../auth/auth.service';
+import {AuthService} from '../../../auth/services/auth.service';
 import {Router} from '@angular/router';
 import {of} from 'rxjs';
 import {HamburgerNavigationBarComponent} from '../hamburger-navigation-bar/hamburger-navigation-bar.component';

@@ -3,11 +3,11 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {LoginPageComponent} from './login-page.component';
 import {FormBuilder, ReactiveFormsModule} from '@angular/forms';
 import {Router} from '@angular/router';
-import {AuthService, TOKEN_KEY} from '../auth.service';
-import {AuthTokenResponse, UserService} from '../../api/backend';
+import {AuthService, TOKEN_KEY} from '../../services/auth.service';
+import {AuthTokenResponse, UserService} from '../../../api/backend';
 import {HttpResponse} from '@angular/common/http';
 import {defer, of} from 'rxjs';
-import {LogoComponent} from '../../shared/logo/logo.component';
+import {LogoComponent} from '../../../shared/logo/logo.component';
 
 describe('LoginPageComponent', () => {
   let component: LoginPageComponent;

@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, ValidationErrors, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {ErrorResponse, UserRequest, UserService} from 'src/app/api/backend';
-import {AuthService} from '../auth.service';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-register-page',

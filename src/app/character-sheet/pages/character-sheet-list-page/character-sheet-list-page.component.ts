@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {CharacterSheetListModel} from '../models/character-sheet-list-model';
-import {CharacterResponse, CharacterService, EffectResponsePageResponse, ErrorResponse} from '../../api/backend';
+import {CharacterSheetListModel} from '../../models/character-sheet-list-model';
+import {CharacterResponse, CharacterService, EffectResponsePageResponse, ErrorResponse} from '../../../api/backend';
 
 @Component({
   selector: 'app-character-sheet-list-page',

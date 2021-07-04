@@ -1,7 +1,7 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {CharacterSheetPageComponent} from './character-sheet-page.component';
-import {CharacterResponse, CharacterService, LevelService} from '../../api/backend';
+import {CharacterResponse, CharacterService, LevelService} from '../../../api/backend';
 import {ActivatedRoute} from '@angular/router';
 import {Observable, of} from 'rxjs';
 import {CharacterSheetListPageComponent} from '../character-sheet-list-page/character-sheet-list-page.component';

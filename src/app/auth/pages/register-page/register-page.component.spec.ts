@@ -3,11 +3,11 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {RegisterPageComponent} from './register-page.component';
 import {defer, of} from 'rxjs';
 import {HttpResponse} from '@angular/common/http';
-import {AuthTokenResponse, UserService} from '../../api/backend';
+import {AuthTokenResponse, UserService} from '../../../api/backend';
 import {Router} from '@angular/router';
-import {AuthService} from '../auth.service';
+import {AuthService} from '../../services/auth.service';
 import {ReactiveFormsModule} from '@angular/forms';
-import {LogoComponent} from '../../shared/logo/logo.component';
+import {LogoComponent} from '../../../shared/logo/logo.component';
 import {LoginPageComponent} from '../login-page/login-page.component';
 
 describe('RegisterPageComponent', () => {

@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {CharacterSheetListPageComponent} from './character-sheet-list-page/character-sheet-list-page.component';
-import {CharacterSheetPageComponent} from './character-sheet-page/character-sheet-page.component';
+import {CharacterSheetListPageComponent} from './pages/character-sheet-list-page/character-sheet-list-page.component';
+import {CharacterSheetPageComponent} from './pages/character-sheet-page/character-sheet-page.component';
 
 const routes: Routes = [
   { path: ':name', component: CharacterSheetPageComponent },

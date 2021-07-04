@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {UserService} from '../api/backend';
+import {UserService} from '../../api/backend';
 
 export const TOKEN_KEY = 'auth-token';
 

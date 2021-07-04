@@ -1,7 +1,7 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {CharacterSheetListPageComponent} from './character-sheet-list-page.component';
-import {CharacterService} from '../../api/backend';
+import {CharacterService} from '../../../api/backend';
 
 describe('CharacterSheetListPageComponent', () => {
   let component: CharacterSheetListPageComponent;

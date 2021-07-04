@@ -1,7 +1,7 @@
 import {TestBed} from '@angular/core/testing';
 
 import {AuthService, TOKEN_KEY} from './auth.service';
-import {UserResponse, UserService} from '../api/backend';
+import {UserResponse, UserService} from '../../api/backend';
 import {defer, of} from 'rxjs';
 import {HttpErrorResponse, HttpEvent, HttpResponse} from '@angular/common/http';
 import {Router} from '@angular/router';

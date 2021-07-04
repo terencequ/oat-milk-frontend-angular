@@ -1,28 +1,19 @@
-import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {
-  CharacterResponse,
-  CharacterService,
-  ErrorResponse,
-  LevelResponsePageResponse,
-  LevelService
-} from '../../api/backend';
-import {CharacterSheetModel} from '../models/character-sheet-model';
-import {CharacterSheetStatsModel} from '../models/character-sheet-stats-model';
-import {CharacterSheetSkillsModel} from '../models/character-sheet-skills-model';
+import {CharacterResponse, CharacterService, ErrorResponse, LevelResponsePageResponse, LevelService} from '../../../api/backend';
+import {OnInit} from '@angular/core';
+import {CharacterSheetModel} from '../../models/character-sheet-model';
+import {CharacterSheetStatsModel} from '../../models/character-sheet-stats-model';
+import {CharacterSheetSkillsModel} from '../../models/character-sheet-skills-model';
 
-
-@Component({
-  selector: 'app-character-sheet-page',
-  templateUrl: './character-sheet-page.component.html',
-  styleUrls: ['./character-sheet-page.component.scss']
-})
-export class CharacterSheetPageComponent implements OnInit {
-
+/**
+ * Abstract class for any page that uses route parameters to retrieve character information.
+ * Examples: Page to view one character, page to edit one character
+ */
+export abstract class BaseCharacterSheetPage implements OnInit {
   characterSheetModel: CharacterSheetModel | null = null;
   overallError: string | null = null;
 
-  constructor(private route: ActivatedRoute, private characterService: CharacterService, private levelService: LevelService) { }
+  protected constructor(protected route: ActivatedRoute, protected characterService: CharacterService, protected levelService: LevelService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(async params => {
@@ -34,7 +25,7 @@ export class CharacterSheetPageComponent implements OnInit {
    * Update this page's view model for a character sheet.
    * @param name
    */
-  async updateCharacterSheet(name: string): Promise<void>{
+  protected async updateCharacterSheet(name: string): Promise<void>{
     try {
       console.log(`Showing character ${name}`);
       const sheet = await this.characterService.characterNameGet(name).toPromise();
@@ -52,7 +43,7 @@ export class CharacterSheetPageComponent implements OnInit {
     }
   }
 
-  getAttribute(sheet: CharacterResponse, type: string): number {
+  protected getAttribute(sheet: CharacterResponse, type: string): number {
     return sheet.attributes?.find(attr => attr.type?.toLowerCase() === type.toLowerCase())?.baseValue ?? 0;
   }
 
@@ -61,7 +52,7 @@ export class CharacterSheetPageComponent implements OnInit {
    * @param sheet Character sheet response
    * @param levels Level definitions response
    */
-  populateCharacterSheetModelLevel(sheet: CharacterResponse, levels: LevelResponsePageResponse): void{
+  protected populateCharacterSheetModelLevel(sheet: CharacterResponse, levels: LevelResponsePageResponse): void{
     const levelArray = levels.items?.sort((a, b) => (b.experienceRequirement ?? 0) - (a.experienceRequirement ?? 0)) ?? [];
     const experience = sheet.experience ?? 0;
 
@@ -97,7 +88,7 @@ export class CharacterSheetPageComponent implements OnInit {
    * Populate the character sheet's stats.
    * @param sheet Character sheet response
    */
-  populateCharacterSheetModelStats(sheet: CharacterResponse): void{
+  protected populateCharacterSheetModelStats(sheet: CharacterResponse): void{
     const statNames: Array<keyof CharacterSheetStatsModel> =
       ['strength', 'dexterity', 'constitution', 'intelligence', 'wisdom', 'charisma'];
     for (const name of statNames) {
@@ -111,7 +102,7 @@ export class CharacterSheetPageComponent implements OnInit {
    * Populate the character sheet's skills.
    * @param sheet Character sheet response
    */
-  populateCharacterSheetModelSkills(sheet: CharacterResponse): void{
+  protected populateCharacterSheetModelSkills(sheet: CharacterResponse): void{
     const skillNames: Array<keyof CharacterSheetSkillsModel> =
       ['acrobatics', 'animalHandling', 'arcana', 'athletics',
         'deception', 'history', 'insight', 'intimidation',

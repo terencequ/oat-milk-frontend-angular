@@ -7,7 +7,7 @@ import {CoreModule} from './core/core.module';
 import {environment} from 'src/environments/environment';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {BackendApiModule, BASE_PATH, Configuration, ConfigurationParameters} from './api/backend';
-import {AuthInterceptor} from './auth/auth-interceptor.service';
+import {AuthInterceptor} from './auth/services/auth-interceptor.service';
 
 @NgModule({
   declarations: [

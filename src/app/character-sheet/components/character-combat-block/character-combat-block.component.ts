@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {CharacterSheetModel} from '../../models/character-sheet-model';
 
 @Component({
   selector: 'app-character-combat-block',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./character-combat-block.component.scss']
 })
 export class CharacterCombatBlockComponent implements OnInit {
+
+  @Input() characterSheetModel: CharacterSheetModel | null = null;
 
   constructor() { }
 

@@ -1,8 +1,8 @@
 import {inject, TestBed} from '@angular/core/testing';
 
 import {AuthGuardService} from './auth-guard.service';
-import {UserService} from '../api/backend';
-import {CharacterSheetPageComponent} from '../character-sheet/character-sheet-page/character-sheet-page.component';
+import {UserService} from '../../api/backend';
+import {CharacterSheetPageComponent} from '../../character-sheet/pages/character-sheet-page/character-sheet-page.component';
 import {AuthService} from './auth.service';
 import {Router} from '@angular/router';
 import createSpyObj = jasmine.createSpyObj;

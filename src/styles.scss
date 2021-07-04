@@ -58,7 +58,7 @@ form {
   margin-top: 20vh;
   text-align: center;
 
-  > input {
+  input {
     box-sizing: border-box;
     display: block;
     padding: 0px 10px;
@@ -67,6 +67,14 @@ form {
     width: $form-element-width;
     max-width: 95%;
     height: $form-element-height;
+  }
+
+  input[type="checkbox"] {
+    height: $form-element-height/2;
+  }
+
+  input[type="number"] {
+    width: $form-element-width/6;
   }
 
   > img {

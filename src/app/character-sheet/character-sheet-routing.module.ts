@@ -3,10 +3,11 @@ import {RouterModule, Routes} from '@angular/router';
 import {CharacterSheetListPageComponent} from './pages/character-sheet-list-page/character-sheet-list-page.component';
 import {CharacterSheetViewPageComponent} from './pages/character-sheet-view-page/character-sheet-view-page.component';
 import {CharacterSheetCreatePageComponent} from './pages/character-sheet-create-page/character-sheet-create-page.component';
+import {CharacterSheetEditPageComponent} from './pages/character-sheet-edit-page/character-sheet-edit-page.component';
 
 const routes: Routes = [
   { path: 'new', component: CharacterSheetCreatePageComponent },
-  { path: 'edit/:name', component: CharacterSheetCreatePageComponent },
+  { path: 'edit/:name', component: CharacterSheetEditPageComponent },
   { path: 'view/:name', component: CharacterSheetViewPageComponent },
   { path: '', component: CharacterSheetListPageComponent },
 ];

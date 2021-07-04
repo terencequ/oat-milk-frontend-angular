@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {CharacterSheetListModel} from '../../models/character-sheet-list-model';
+import {CharacterSheetListModel} from '../../models/responses/character-sheet-list-model';
 import {CharacterResponse, CharacterService, EffectResponsePageResponse, ErrorResponse} from '../../../api/backend';
 
 @Component({

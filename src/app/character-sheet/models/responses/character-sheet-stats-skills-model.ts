@@ -1,4 +1,4 @@
-export interface CharacterSheetSkillsModel {
+export interface CharacterSheetStatsSkillsModel {
   acrobatics: boolean;
   animalHandling: boolean;
   arcana: boolean;

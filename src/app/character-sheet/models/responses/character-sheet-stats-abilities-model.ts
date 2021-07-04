@@ -1,4 +1,4 @@
-export interface CharacterSheetStatsModel {
+export interface CharacterSheetStatsAbilitiesModel {
   strength: number;
   dexterity: number;
   constitution: number;

@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {NavigationEnd, Router} from '@angular/router';
+import {Event, NavigationEnd, Router} from '@angular/router';
 import {AuthService} from './auth/services/auth.service';
 
 @Component({
@@ -39,5 +39,9 @@ export class AppComponent implements OnInit {
 
   doesRouteRequireAuth(url: string): boolean {
     return url !== '/auth/login' && url !== '/auth/register';
+  }
+
+  onActivate($event: Event): void {
+    window.scroll(0, 0);
   }
 }

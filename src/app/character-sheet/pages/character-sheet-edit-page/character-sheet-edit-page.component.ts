@@ -1,21 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import {CharacterRequest, CharacterService, ErrorResponse, LevelService} from '../../../api/backend';
-import {BaseCharacterSheetFormPage} from '../abstract/base-character-sheet-form-page.component';
 import {FormBuilder} from '@angular/forms';
-import {getAbilityNames, getSkillNames} from '../../helpers/character-sheet-type.helper';
-import {SubmittableFormInterface} from '../../../shared/abstract/submittable-form.interface';
-import {CharacterSheetFormModel} from '../../models/requests/character-sheet-form-model';
+import {ActivatedRoute, Router} from '@angular/router';
+import {CharacterService, ErrorResponse, LevelService} from '../../../api/backend';
+import {BaseCharacterSheetFormPage} from '../abstract/base-character-sheet-form-page.component';
+import {getAbilityNames} from '../../helpers/character-sheet-type.helper';
 
-/**
- * This page is used for editing and creating character sheets.
- */
 @Component({
   selector: 'app-character-sheet-edit-page',
-  templateUrl: './character-sheet-create-page.component.html',
-  styleUrls: ['./character-sheet-create-page.component.scss']
+  templateUrl: './character-sheet-edit-page.component.html',
+  styleUrls: ['./character-sheet-edit-page.component.scss']
 })
-export class CharacterSheetCreatePageComponent extends BaseCharacterSheetFormPage implements SubmittableFormInterface, OnInit {
+export class CharacterSheetEditPageComponent extends BaseCharacterSheetFormPage implements OnInit {
+
+  characterIdentifier: string | null = null;
 
   constructor(private router: Router,
               formBuilder: FormBuilder,
@@ -26,16 +23,20 @@ export class CharacterSheetCreatePageComponent extends BaseCharacterSheetFormPag
   }
 
   ngOnInit(): void {
-    this.updateFormWithCharacterSheetModel(); // this will clear the form
+    this.route.params.subscribe(async params => {
+      await this.updateCharacterSheet(params.name);
+      this.updateFormWithCharacterSheetModel(); // this will update the form with the character
+    });
   }
 
   async submit(event: Event): Promise<void> {
     const request = this.getFormValueAsCharacterRequest();
     try {
+      const characterId = this.getIdFromCharacterSheet();
       // Send a request for the whole character
-      const result = await this.characterService.characterPost(request, 'body').toPromise();
+      await this.characterService.characterIdPut(characterId, request, 'body').toPromise();
       // Send a request for each ability attribute
-      await this.sendAttributeUpdateRequests(result.id ?? '');
+      await this.sendAttributeUpdateRequests(characterId);
       await this.router.navigate(['character-sheet']);
     } catch (error) {
       const errorResponse = error.error as ErrorResponse;

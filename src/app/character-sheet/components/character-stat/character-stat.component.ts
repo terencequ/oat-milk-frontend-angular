@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {CharacterSheetSkillsModel} from '../../models/character-sheet-skills-model';
-import {CharacterSheetStatModel} from '../../models/character-sheet-stat-model';
-import {CharacterSheetProficiencyModel} from '../../models/character-sheet-proficiency-model';
+import {CharacterSheetStatsSkillsModel} from '../../models/responses/character-sheet-stats-skills-model';
+import {CharacterSheetStatModel} from '../../models/responses/character-sheet-stat-model';
+import {CharacterSheetProficiencyModel} from '../../models/responses/character-sheet-proficiency-model';
 
 @Component({
   selector: 'app-character-stat',

@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {CharacterSheetModel} from '../../models/character-sheet-model';
+import {CharacterSheetModel} from '../../models/responses/character-sheet-model';
 
 @Component({
   selector: 'app-character-experience-bar',

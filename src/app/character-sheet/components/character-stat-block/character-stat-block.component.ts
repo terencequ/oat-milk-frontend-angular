@@ -1,9 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {CharacterSheetModel} from '../../models/character-sheet-model';
-import {CharacterSheetStatsModel} from '../../models/character-sheet-stats-model';
-import {CharacterSheetSkillsModel} from '../../models/character-sheet-skills-model';
-import {CharacterSheetStatModel} from '../../models/character-sheet-stat-model';
-import {CharacterSheetProficiencyModel} from '../../models/character-sheet-proficiency-model';
+import {CharacterSheetModel} from '../../models/responses/character-sheet-model';
+import {CharacterSheetStatsAbilitiesModel} from '../../models/responses/character-sheet-stats-abilities-model';
+import {CharacterSheetStatsSkillsModel} from '../../models/responses/character-sheet-stats-skills-model';
+import {CharacterSheetStatModel} from '../../models/responses/character-sheet-stat-model';
+import {CharacterSheetProficiencyModel} from '../../models/responses/character-sheet-proficiency-model';
 
 @Component({
   selector: 'app-character-stat-block',
@@ -19,11 +19,11 @@ export class CharacterStatBlockComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getStatNames(): Array<keyof CharacterSheetStatsModel>{
+  getStatNames(): Array<keyof CharacterSheetStatsAbilitiesModel>{
     return ['strength', 'dexterity', 'constitution', 'intelligence', 'wisdom', 'charisma'];
   }
 
-  getStatModel(statName: keyof CharacterSheetStatsModel): CharacterSheetStatModel{
+  getStatModel(statName: keyof CharacterSheetStatsAbilitiesModel): CharacterSheetStatModel{
     return {
       label: statName,
       value: this.getStatValue(statName),
@@ -32,17 +32,17 @@ export class CharacterStatBlockComponent implements OnInit {
     };
   }
 
-  getStatValue(statName: keyof CharacterSheetStatsModel): number{
+  getStatValue(statName: keyof CharacterSheetStatsAbilitiesModel): number{
     return this.characterSheetModel ? this.characterSheetModel[statName] : 0;
   }
 
-  getStatModifier(statName: keyof CharacterSheetStatsModel): number{
+  getStatModifier(statName: keyof CharacterSheetStatsAbilitiesModel): number{
     const value = this.getStatValue(statName);
     return Math.floor((value - 10) / 2);
   }
 
-  getStatProficiencies(statName: keyof CharacterSheetStatsModel): Array<CharacterSheetProficiencyModel>{
-    let proficiencyNames: Array<keyof CharacterSheetSkillsModel> = [];
+  getStatProficiencies(statName: keyof CharacterSheetStatsAbilitiesModel): Array<CharacterSheetProficiencyModel>{
+    let proficiencyNames: Array<keyof CharacterSheetStatsSkillsModel> = [];
     switch (statName){
       case 'strength':
         proficiencyNames = ['athletics'];

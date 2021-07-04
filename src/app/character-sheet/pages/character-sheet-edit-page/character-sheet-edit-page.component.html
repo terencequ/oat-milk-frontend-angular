@@ -1,6 +1,6 @@
 <div class="character-sheet-page">
   <form [formGroup]="characterSheetForm">
-    <h1>Create a new character sheet</h1>
+    <h1>Edit {{characterSheetModel?.name}}</h1>
 
     <p>Name</p>
     <input name="name" placeholder="Name" formControlName="name">
@@ -22,6 +22,6 @@
     </div>
 
     <small>{{overallError}}</small>
-    <input name="create" type="submit" value="Create" (click)="submit($event)">
+    <input name="update" type="submit" value="Update" (click)="submit($event)">
   </form>
 </div>

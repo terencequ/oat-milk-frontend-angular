@@ -1,9 +1,10 @@
 import {ActivatedRoute} from '@angular/router';
 import {CharacterResponse, CharacterService, ErrorResponse, LevelResponsePageResponse, LevelService} from '../../../api/backend';
 import {Injectable, OnInit} from '@angular/core';
-import {CharacterSheetModel} from '../../models/character-sheet-model';
-import {CharacterSheetStatsModel} from '../../models/character-sheet-stats-model';
-import {CharacterSheetSkillsModel} from '../../models/character-sheet-skills-model';
+import {CharacterSheetModel} from '../../models/responses/character-sheet-model';
+import {CharacterSheetStatsAbilitiesModel} from '../../models/responses/character-sheet-stats-abilities-model';
+import {CharacterSheetStatsSkillsModel} from '../../models/responses/character-sheet-stats-skills-model';
+import {getSkillNames, getAbilityNames} from '../../helpers/character-sheet-type.helper';
 
 /**
  * Abstract class for any page that uses route parameters to retrieve character information.
@@ -20,7 +21,7 @@ export abstract class BaseCharacterSheetPage {
 
   /**
    * Update this page's view model for a character sheet.
-   * @param name
+   * @param name Character's unique name
    */
   protected async updateCharacterSheet(name: string): Promise<void>{
     try {
@@ -32,8 +33,8 @@ export abstract class BaseCharacterSheetPage {
         name: sheet.name ?? '',
       } as CharacterSheetModel;
       this.populateCharacterSheetModelLevel(sheet, levels);
-      this.populateCharacterSheetModelStats(sheet);
-      this.populateCharacterSheetModelSkills(sheet);
+      this.populateCharacterSheetModelStatsAbilities(sheet);
+      this.populateCharacterSheetModelStatsSkills(sheet);
     } catch (error) {
       const errorResponse = error as ErrorResponse;
       this.overallError = errorResponse.message ?? 'Something unexpected went wrong.';
@@ -82,13 +83,11 @@ export abstract class BaseCharacterSheetPage {
   }
 
   /**
-   * Populate the character sheet's stats.
+   * Populate the character sheet's ability scores.
    * @param sheet Character sheet response
    */
-  protected populateCharacterSheetModelStats(sheet: CharacterResponse): void{
-    const statNames: Array<keyof CharacterSheetStatsModel> =
-      ['strength', 'dexterity', 'constitution', 'intelligence', 'wisdom', 'charisma'];
-    for (const name of statNames) {
+  protected populateCharacterSheetModelStatsAbilities(sheet: CharacterResponse): void{
+    for (const name of getAbilityNames()) {
       if (this.characterSheetModel) {
         this.characterSheetModel[name] = this.getAttribute(sheet, name);
       }
@@ -99,16 +98,24 @@ export abstract class BaseCharacterSheetPage {
    * Populate the character sheet's skills.
    * @param sheet Character sheet response
    */
-  protected populateCharacterSheetModelSkills(sheet: CharacterResponse): void{
-    const skillNames: Array<keyof CharacterSheetSkillsModel> =
-      ['acrobatics', 'animalHandling', 'arcana', 'athletics',
-        'deception', 'history', 'insight', 'intimidation',
-        'investigation', 'medicine', 'nature', 'perception',
-        'performance', 'persuasion', 'religion', 'sleightOfHand', 'stealth', 'survival'];
-    for (const name of skillNames) {
+  protected populateCharacterSheetModelStatsSkills(sheet: CharacterResponse): void{
+    for (const name of getSkillNames()) {
       if (this.characterSheetModel) {
         this.characterSheetModel[name] = sheet[name] ?? false;
       }
     }
+  }
+
+  /**
+   * This will retrieve the id from the current character sheet model.
+   * If it can't be retrieved, set the overallError variable.
+   */
+  protected getIdFromCharacterSheet(): string{
+    const characterId = this.characterSheetModel?.id ?? null;
+    if (characterId == null){
+      this.overallError = 'Character not found!';
+      return '';
+    }
+    return characterId;
   }
 }

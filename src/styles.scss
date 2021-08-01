@@ -56,7 +56,7 @@ $form-element-width: 400px;
 $form-element-height: 40px;
 
 form {
-  margin: 20vh auto auto; 
+  margin: 20vh auto auto;
   text-align: center;
 
   input {
@@ -75,7 +75,7 @@ form {
   }
 
   input[type="number"] {
-    width: math.div($form-element-width, 6);
+    width: $form-element-width / 6;
   }
 
   > img {

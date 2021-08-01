@@ -4,6 +4,14 @@ import {Router} from '@angular/router';
 import {ErrorResponse, UserRequest, UserService} from 'src/app/api/backend';
 import {AuthService} from '../../services/auth.service';
 
+interface RegisterFormErrors {
+  email: string;
+  displayName: string;
+  password: string;
+  confirmPassword: string;
+  overall: string;
+}
+
 @Component({
   selector: 'app-register-page',
   templateUrl: './register-page.component.html',
@@ -12,7 +20,7 @@ import {AuthService} from '../../services/auth.service';
 export class RegisterPageComponent implements OnInit {
 
   form: FormGroup;
-  errors: any = {
+  errors: RegisterFormErrors = {
     email: '',
     displayName: '',
     password: '',

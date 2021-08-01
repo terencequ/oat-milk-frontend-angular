@@ -4,6 +4,12 @@ import {Router} from '@angular/router';
 import {AuthService} from '../../services/auth.service';
 import {ErrorResponse, UserLoginRequest, UserService} from '../../../api/backend';
 
+interface LoginFormErrors {
+  email: string;
+  password: string;
+  overall: string;
+}
+
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
@@ -12,7 +18,7 @@ import {ErrorResponse, UserLoginRequest, UserService} from '../../../api/backend
 export class LoginPageComponent implements OnInit {
 
   form: FormGroup;
-  errors = {
+  errors : LoginFormErrors = {
     email: '',
     password: '',
     overall: ''

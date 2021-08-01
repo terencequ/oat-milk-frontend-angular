@@ -84,8 +84,12 @@ export class LoginPageComponent implements OnInit {
         await this.router.navigate(['/dashboard']);
       } catch (error) {
         const errorResponse = error.error as ErrorResponse;
-        this.errors.overall = errorResponse?.message ?? 'An unexpected error has occurred.';
-        this.authService.clearToken();
+        if (error.status === 0){
+          this.errors.overall = 'Services are down, please try again later.';
+        } else {
+          this.errors.overall = errorResponse?.message ?? 'An unexpected error has occurred.';
+          this.authService.clearToken();
+        }
       }
     }
   }

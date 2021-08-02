@@ -1,0 +1,27 @@
+<div class="character-sheet-page">
+  <form [formGroup]="characterSheetForm">
+    <h1>Create a new character sheet</h1>
+
+    <p>Name</p>
+    <input name="name" placeholder="Name" formControlName="name">
+
+    <p>Experience</p>
+    <input type="number" name="experience" formControlName="experience">
+
+    <div class="ability-section">
+      <div *ngFor="let ability of getAbilityNames()" >
+        <p>{{getFormDisplayName(ability)}}</p>
+        <input type="number" name="{{ability}}" formControlName="{{ability}}">
+      </div>
+    </div>
+    <div class="skill-section">
+      <div *ngFor="let skill of getSkillNames()">
+        <p>{{getFormDisplayName(skill)}}</p>
+        <input type="checkbox" name="{{skill}}" formControlName="{{skill}}">
+      </div>
+    </div>
+
+    <small>{{overallError}}</small>
+    <input name="create" type="submit" value="Create" (click)="submit($event)">
+  </form>
+</div>

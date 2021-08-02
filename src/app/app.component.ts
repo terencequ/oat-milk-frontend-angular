@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
-import { AuthService } from './auth/auth.service';
+import {Component, Input, OnInit} from '@angular/core';
+import {Event, NavigationEnd, Router} from '@angular/router';
+import {AuthService} from './auth/services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -8,14 +8,16 @@ import { AuthService } from './auth/auth.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  routeIsInApp: boolean = false; // Determines if nav bar and footer should be rendered
+  title = 'Oat Milk';
+  routeIsInApp = false; // Determines if nav bar and footer should be rendered
 
   constructor(private router: Router,
-    private authService: AuthService) { }
+              private authService: AuthService) {
+  }
 
-  ngOnInit() : void {
+  ngOnInit(): void {
     this.router.events.subscribe(async (event) => {
-      if(event instanceof NavigationEnd){
+      if (event instanceof NavigationEnd) {
         const navEnd = event as NavigationEnd;
 
         // Update routeIsInApp state
@@ -23,19 +25,23 @@ export class AppComponent implements OnInit {
         this.routeIsInApp = this.doesRouteRequireAuth(navEnd.urlAfterRedirects); // Nav bar and footer shouldn't show for /auth
 
         // Update authentication state
-        var authenticated = await this.authService.isAuthenticated();
-        console.log("Authenticated? " + authenticated);
-        console.log("Route requires auth? " + this.doesRouteRequireAuth(navEnd.urlAfterRedirects));
-        if(authenticated && !this.doesRouteRequireAuth(navEnd.urlAfterRedirects)) {
-          this.router.navigate(['/dashboard']);
+        const authenticated = await this.authService.isAuthenticated();
+        console.log('Authenticated? ' + authenticated);
+        console.log('Route requires auth? ' + this.doesRouteRequireAuth(navEnd.urlAfterRedirects));
+        if (authenticated && !this.doesRouteRequireAuth(navEnd.urlAfterRedirects)) {
+          await this.router.navigate(['/dashboard']);
         } else if (!authenticated && this.doesRouteRequireAuth(navEnd.urlAfterRedirects)) {
-          this.router.navigate(['/login']);
+          await this.router.navigate(['/login']);
         }
       }
     });
   }
 
-  doesRouteRequireAuth(url: string){
-    return url != "/auth/login" && url != "/auth/register";
+  doesRouteRequireAuth(url: string): boolean {
+    return url !== '/auth/login' && url !== '/auth/register';
+  }
+
+  onActivate($event: Event): void {
+    window.scroll(0, 0);
   }
 }

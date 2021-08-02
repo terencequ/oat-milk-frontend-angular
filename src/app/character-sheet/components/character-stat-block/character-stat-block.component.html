@@ -1,0 +1,8 @@
+<div class="stat-block">
+  <div *ngFor="let statName of getStatNames()">
+    <app-character-stat
+      [stat]="getStatModel(statName)"
+      [statProficiencies]="getStatProficiencies(statName)"
+    ></app-character-stat>
+  </div>
+</div>

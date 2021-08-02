@@ -1,0 +1,19 @@
+<div class="outer-header">
+  <div class="top-bar">
+    <div class="hamburger">
+      <a (click)="toggleExpanded()"><i class="hamburger fa fa-bars"></i></a>
+    </div>
+    <div class="logo">
+      <app-logo [scale]="1" [showImage]="false"></app-logo>
+    </div>
+  </div>
+  <nav [ngStyle]="{ maxHeight: isExpanded ? '300px' : '0px' }">
+    <ul>
+      <li><a class="hover-underline" routerLink="/dashboard">Dashboard</a></li>
+      <li><a class="hover-underline" routerLink="/character-sheet">Character Sheets</a></li>
+      <li><a class="hover-underline" routerLink="" (click)="logout()">Log out</a></li>
+    </ul>
+  </nav>
+</div>
+
+<div class="spacer"></div>

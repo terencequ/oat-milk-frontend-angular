@@ -1,0 +1,67 @@
+@import '../../../../assets/colors';
+
+$top-bar-height: 20vw;
+$top-bar-max-height: 5em;
+$outer-horizontal-padding: 3vw;
+$nav-link-vertical-spacing: 7vw;
+$nav-link-font-size: 1.2em;
+
+.outer-header {
+  height: $top-bar-height;
+  max-height: $top-bar-max-height;
+  background-color: $background-color-emphasized;
+  overflow: visible;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+}
+
+.top-bar {
+  display: flex;
+  align-items: center;
+  height: $top-bar-height;
+  max-height: $top-bar-max-height;
+  padding: 0 $outer-horizontal-padding;
+  .hamburger {
+    display: inline-block;
+    font-size: 40px;
+    text-align: left;
+    i {
+      align-items: center;
+      display: flex;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .logo {
+    display: inline-block;
+    text-align: right;
+    margin-left: auto;
+  }
+}
+
+nav {
+  background-color: $background-color-emphasized;
+  display: block;
+  transition: max-height 0.4s;
+  overflow: hidden;
+
+  ul {
+    list-style: none;
+
+    li {
+      margin: $nav-link-vertical-spacing 0px;
+
+      a {
+        font-size: $nav-link-font-size;
+      }
+    }
+  }
+}
+
+.spacer {
+  height: $top-bar-height;
+  max-height: $top-bar-max-height;
+}

@@ -1,0 +1,19 @@
+<div class="stat">
+  <div class="stat-box">
+    <div class="stat-label">{{getStatLabel()}}</div>
+    <div class="stat-modifier">{{getStatModifier()}}</div>
+    <div class="stat-value">{{getStatValue()}}</div>
+  </div>
+  <div class="proficiency-container">
+    <div class="proficiency-box">
+      <i class="proficiency-proficient fa fa-circle" *ngIf="getStatProficient()"></i>
+      <i class="proficiency-proficient fa fa-circle-thin" *ngIf="!getStatProficient()"></i>
+      <div class="proficiency-label">Saving Throw</div>
+    </div>
+    <div class="proficiency-box" *ngFor="let proficiency of statProficiencies">
+      <i class="proficiency-proficient fa fa-circle" *ngIf="getProficiencyProficient(proficiency)"></i>
+      <i class="proficiency-proficient fa fa-circle-thin" *ngIf="!getProficiencyProficient(proficiency)"></i>
+      <div class="proficiency-label">{{getProficiencyLabel(proficiency)}}</div>
+    </div>
+  </div>
+</div>

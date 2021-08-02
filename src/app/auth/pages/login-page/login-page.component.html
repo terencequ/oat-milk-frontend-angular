@@ -1,0 +1,18 @@
+<div class="login-page">
+  <form [formGroup]="form">
+    <app-logo [wordUnderImage]="true"></app-logo>
+    <h1>Login</h1>
+
+    <small>{{errors["email"]}}</small>
+    <input name="email" placeholder="Email address" formControlName="email">
+
+    <small>{{errors["password"]}}</small>
+    <input name="password" placeholder="Password" formControlName="password" type="password">
+
+    <input name="login" type="submit" value="Login" (click)="login($event)">
+    <small>{{errors["overall"]}}</small>
+  </form>
+  <div>
+    <a class="hover-underline" routerLink="/auth/register">Don't have an account? Register here.</a>
+  </div>
+</div>

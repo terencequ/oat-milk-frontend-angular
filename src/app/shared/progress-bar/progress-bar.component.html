@@ -1,0 +1,4 @@
+<div class="progress-bar" [ngStyle]="{ height: barHeight, width: barWidth }">
+  <div class="max" [ngStyle]="{ height: barHeight }"></div>
+  <div class="current" [ngStyle]="{ marginTop: '-'+barHeight, height: barHeight, width: getCurrentPercent()+'%' }"></div>
+</div>

@@ -1,19 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@700&display=swap');
 
-.logo {
-    text-align: center;
-    * {
-        vertical-align: middle;
-        // No highlighting or selecting
-        pointer-events: none;
-        user-select: none;
+.app-logo {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  * {
+    text-shadow: 2px 2px 4px #c4c4c4;
 
-        text-shadow: 2px 2px 4px #c4c4c4;
-    }
-    h1 {
-        padding: 0px;
-        margin: 0px;
-        font-family: 'Josefin Slab', serif;
-        font-weight: 600;
-    }
+    // No highlighting or selecting
+    pointer-events: none;
+    user-select: none;
+  }
+
+  h1 {
+    padding: 0.2em 0 0;
+    margin: 0;
+    font-family: 'Josefin Slab', serif;
+    font-weight: 600;
+  }
 }

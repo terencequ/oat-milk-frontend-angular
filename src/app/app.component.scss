@@ -1,0 +1,32 @@
+@import "../assets/devices";
+
+
+.desktop {
+  display: none;
+}
+
+.phone {
+  display: none;
+}
+
+.tablet {
+  display: none;
+}
+
+@include desktop {
+  .desktop {
+    display: inherit;
+  }
+}
+
+@include phone {
+  .phone {
+    display: inherit;
+  }
+}
+
+@include tablet {
+  .tablet {
+    display: inherit;
+  }
+}

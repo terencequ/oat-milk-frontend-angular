@@ -1,0 +1,67 @@
+@import "../../../../assets/colors";
+
+$stat-box-label-font-size: 1rem;
+$stat-box-modifier-font-size: $stat-box-label-font-size * 3.2;
+$stat-box-margin: $stat-box-label-font-size * 0.4;
+
+$stat-box-width: $stat-box-label-font-size * 10;
+$stat-height: $stat-box-label-font-size * 10;
+
+$proficiency-box-width: calc(100% - #{$stat-box-width});
+
+.stat {
+  width: 100%;
+  height: $stat-height;
+  display: flex;
+  align-items: center;
+  align-content: stretch;
+  margin-bottom: $stat-box-margin;
+  border-top: solid;
+}
+
+.stat-box {
+  display: flex;
+  justify-content: center;
+  flex-flow: wrap;
+  align-content: space-between;
+  background: $background-color-emphasized;
+  width: $stat-box-width;
+  height: $stat-height;
+  .stat-label {
+    font-size: $stat-box-label-font-size;
+    width: 100%;
+    margin-top: $stat-box-label-font-size/2;
+  }
+  .stat-modifier {
+    font-size: $stat-box-modifier-font-size;
+    width: 100%;
+    line-height: $stat-box-modifier-font-size;
+  }
+  .stat-value {
+    font-size: $stat-box-label-font-size;
+    width: 100%;
+    margin-bottom: $stat-box-label-font-size/2;
+  }
+}
+
+.proficiency-container {
+  width: $proficiency-box-width;
+  margin-top: $stat-box-label-font-size/2;
+  margin-bottom: auto;
+  .proficiency-box {
+    display: flex;
+    text-align: start;
+    flex-direction: row;
+    .proficiency-proficient {
+      font-size: $stat-box-label-font-size;
+      margin-left: 5%;
+      width: 10%;
+      display: flex;
+      align-items: center;
+    }
+    .proficiency-label {
+      font-size: $stat-box-label-font-size;
+      width: 80%;
+    }
+  }
+}

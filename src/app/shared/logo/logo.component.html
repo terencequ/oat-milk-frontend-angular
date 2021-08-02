@@ -1,11 +1,14 @@
-<div class="logo">
-    <img src="assets/oatmilk-128x128.png" alt="Oat Milk logo" 
-        [ngStyle]="{ 
-            height: 64*scale+'px', 
-            width: 64*scale+'px' 
+<div class="app-logo" [ngStyle]="{
+          flexDirection: wordUnderImage ? 'column' : 'row'
+      }">
+  <img src="assets/oatmilk-128x128.png" alt="Oat Milk logo"
+       [ngStyle]="{
+            display: showImage ? 'inherit' : 'none',
+            height: 64*scale+'px',
+            width: 64*scale+'px'
         }">
-    <h1 
-        [ngStyle]="{
+  <h1
+    [ngStyle]="{
             fontSize: 30*scale+'px'
         }">Oat Milk</h1>
 </div>

@@ -9,16 +9,14 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { EffectResponse } from './effectResponse';
 
 
-export interface EffectResponsePageResponse { 
-    pageIndex?: number;
-    pageSize?: number;
-    totalCount?: number;
-    totalPages?: number;
-    hasPreviousPage?: boolean;
-    hasNextPage?: boolean;
-    items?: Array<EffectResponse> | null;
+export interface User { 
+    id?: string;
+    createdDateTimeUtc?: string;
+    updatedDateTimeUtc?: string;
+    displayName?: string | null;
+    email?: string | null;
+    password?: string | null;
 }
 

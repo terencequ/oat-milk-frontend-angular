@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {CharacterSheetListModel} from '../../models/responses/character-sheet-list-model';
-import {CharacterResponse, CharacterService, EffectResponsePageResponse, ErrorResponse} from '../../../api/backend';
+import {CharacterResponse, CharacterResponsePageResponse, CharacterService, ErrorResponse} from '../../../api/backend';
 
 @Component({
   selector: 'app-character-sheet-list-page',
@@ -16,7 +16,7 @@ export class CharacterSheetListPageComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     try {
-      const result: EffectResponsePageResponse = await this.characterService.characterGet().toPromise();
+      const result: CharacterResponsePageResponse = await this.characterService.characterGet().toPromise();
       this.characterSheets = result.items?.map( (element: CharacterResponse) => {
         return {
           id: element.id,

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {BaseCharacterSheetPage} from '../abstract/base-character-sheet-page.component';
 import {ActivatedRoute, Router} from '@angular/router';
-import {CharacterService, ErrorResponse, LevelService} from '../../../api/backend';
+import {CharacterService, ErrorResponse} from '../../../api/backend';
+import {LevelService} from '../../services/level/level.service';
 
 
 @Component({

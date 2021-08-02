@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
-import {CharacterService, ErrorResponse, LevelService} from '../../../api/backend';
+import {CharacterService, ErrorResponse} from '../../../api/backend';
 import {BaseCharacterSheetFormPage} from '../abstract/base-character-sheet-form-page.component';
 import {getAbilityNames} from '../../helpers/character-sheet-type.helper';
+import {LevelService} from '../../services/level/level.service';
 
 @Component({
   selector: 'app-character-sheet-edit-page',
@@ -35,8 +36,6 @@ export class CharacterSheetEditPageComponent extends BaseCharacterSheetFormPage 
       const characterId = this.getIdFromCharacterSheet();
       // Send a request for the whole character
       await this.characterService.characterIdPut(characterId, request, 'body').toPromise();
-      // Send a request for each ability attribute
-      await this.sendAttributeUpdateRequests(characterId);
       await this.router.navigate(['character-sheet']);
     } catch (error) {
       const errorResponse = error.error as ErrorResponse;

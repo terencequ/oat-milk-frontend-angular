@@ -11,6 +11,13 @@ export interface CharacterSheetFormModel{
   intelligence: number;
   wisdom: number;
   charisma: number;
+  armorClass: number;
+  initiative: number;
+  speedInFt: number;
+  currentHitPoints: number;
+  maxHitPoints: number;
+  deathSaveSuccesses: number;
+  deathSaveFailures: number;
   acrobatics: boolean;
   animalHandling: boolean;
   arcana: boolean;

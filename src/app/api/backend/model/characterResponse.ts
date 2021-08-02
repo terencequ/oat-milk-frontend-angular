@@ -9,14 +9,27 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { AttributeResponse } from './attributeResponse';
 
 
 export interface CharacterResponse { 
     id?: string;
+    createdDateTimeUtc?: string;
+    updatedDateTimeUtc?: string;
     name?: string | null;
     experience?: number;
-    attributes?: Array<AttributeResponse> | null;
+    strength?: number;
+    dexterity?: number;
+    constitution?: number;
+    intelligence?: number;
+    wisdom?: number;
+    charisma?: number;
+    armorClass?: number;
+    initiative?: number;
+    speedInFt?: number;
+    currentHitPoints?: number;
+    maxHitPoints?: number;
+    deathSaveSuccesses?: number;
+    deathSaveFailures?: number;
     acrobatics?: boolean;
     animalHandling?: boolean;
     arcana?: boolean;
@@ -42,7 +55,5 @@ export interface CharacterResponse {
     backstory?: string | null;
     alliesAndOrganisations?: string | null;
     appearance?: string | null;
-    createdDateTimeUtc?: string;
-    updatedDateTimeUtc?: string;
 }
 

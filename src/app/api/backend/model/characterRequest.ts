@@ -9,16 +9,10 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { User } from './user';
 
 
 export interface CharacterRequest { 
-    id?: string;
-    createdDateTimeUtc?: string;
-    updatedDateTimeUtc?: string;
     name?: string | null;
-    userId?: string;
-    user?: User;
     experience?: number;
     strength?: number;
     dexterity?: number;

@@ -12,7 +12,7 @@
 
 
 export interface CharacterResponse { 
-    id?: string;
+    id?: string | null;
     createdDateTimeUtc?: string;
     updatedDateTimeUtc?: string;
     name?: string | null;

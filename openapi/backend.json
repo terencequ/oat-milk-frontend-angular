@@ -236,7 +236,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid"
+              "nullable": true
             }
           }
         ],
@@ -313,7 +313,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid"
+              "nullable": true
             }
           }
         ],
@@ -595,7 +595,7 @@
         "properties": {
           "id": {
             "type": "string",
-            "format": "uuid"
+            "nullable": true
           },
           "createdDateTimeUtc": {
             "type": "string",
@@ -803,61 +803,12 @@
         },
         "additionalProperties": false
       },
-      "User": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "createdDateTimeUtc": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "updatedDateTimeUtc": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "displayName": {
-            "type": "string",
-            "nullable": true
-          },
-          "email": {
-            "type": "string",
-            "nullable": true
-          },
-          "password": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
       "CharacterRequest": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "createdDateTimeUtc": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "updatedDateTimeUtc": {
-            "type": "string",
-            "format": "date-time"
-          },
           "name": {
             "type": "string",
             "nullable": true
-          },
-          "userId": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "user": {
-            "$ref": "#/components/schemas/User"
           },
           "experience": {
             "type": "integer",
@@ -1056,7 +1007,7 @@
         "properties": {
           "id": {
             "type": "string",
-            "format": "uuid"
+            "nullable": true
           },
           "displayName": {
             "type": "string",

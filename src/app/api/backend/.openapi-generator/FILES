@@ -16,7 +16,6 @@ model/characterResponse.ts
 model/characterResponsePageResponse.ts
 model/errorResponse.ts
 model/models.ts
-model/user.ts
 model/userLoginRequest.ts
 model/userRequest.ts
 model/userResponse.ts

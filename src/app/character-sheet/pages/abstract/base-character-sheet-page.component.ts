@@ -1,10 +1,11 @@
 import {ActivatedRoute} from '@angular/router';
-import {CharacterResponse, CharacterService, ErrorResponse, LevelResponsePageResponse, LevelService} from '../../../api/backend';
+import {CharacterResponse, CharacterService, ErrorResponse } from '../../../api/backend';
 import {Injectable, OnInit} from '@angular/core';
 import {CharacterSheetModel} from '../../models/responses/character-sheet-model';
 import {CharacterSheetStatsAbilitiesModel} from '../../models/responses/character-sheet-stats-abilities-model';
 import {CharacterSheetStatsSkillsModel} from '../../models/responses/character-sheet-stats-skills-model';
 import {getSkillNames, getAbilityNames} from '../../helpers/character-sheet-type.helper';
+import {LevelService} from '../../services/level/level.service';
 
 /**
  * Abstract class for any page that uses route parameters to retrieve character information.
@@ -27,12 +28,11 @@ export abstract class BaseCharacterSheetPage {
     try {
       console.log(`Showing character ${name}`);
       const sheet = await this.characterService.characterNameGet(name).toPromise();
-      const levels = await this.levelService.levelGet().toPromise();
       this.characterSheetModel = {
         id: sheet.id ?? '',
         name: sheet.name ?? '',
       } as CharacterSheetModel;
-      this.populateCharacterSheetModelLevel(sheet, levels);
+      this.populateCharacterSheetModelLevel(sheet);
       this.populateCharacterSheetModelStatsAbilities(sheet);
       this.populateCharacterSheetModelStatsSkills(sheet);
     } catch (error) {
@@ -41,17 +41,14 @@ export abstract class BaseCharacterSheetPage {
     }
   }
 
-  protected getAttribute(sheet: CharacterResponse, type: string): number {
-    return sheet.attributes?.find(attr => attr.type?.toLowerCase() === type.toLowerCase())?.baseValue ?? 0;
-  }
-
   /**
    * Populate character sheet level and experience information.
    * @param sheet Character sheet response
    * @param levels Level definitions response
    */
-  protected populateCharacterSheetModelLevel(sheet: CharacterResponse, levels: LevelResponsePageResponse): void{
-    const levelArray = levels.items?.sort((a, b) => (b.experienceRequirement ?? 0) - (a.experienceRequirement ?? 0)) ?? [];
+  protected populateCharacterSheetModelLevel(sheet: CharacterResponse): void{
+    const levels = this.levelService.getLevels();
+    const levelArray = levels.sort((a, b) => (b.experienceRequirement ?? 0) - (a.experienceRequirement ?? 0)) ?? [];
     const experience = sheet.experience ?? 0;
 
     let level: number | null = null;
@@ -89,7 +86,7 @@ export abstract class BaseCharacterSheetPage {
   protected populateCharacterSheetModelStatsAbilities(sheet: CharacterResponse): void{
     for (const name of getAbilityNames()) {
       if (this.characterSheetModel) {
-        this.characterSheetModel[name] = this.getAttribute(sheet, name);
+        this.characterSheetModel[name] = sheet[name] ?? 0;
       }
     }
   }

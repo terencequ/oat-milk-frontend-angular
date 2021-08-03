@@ -1,13 +1,7 @@
-export * from './ability.service';
-import { AbilityService } from './ability.service';
 export * from './character.service';
 import { CharacterService } from './character.service';
-export * from './effect.service';
-import { EffectService } from './effect.service';
-export * from './level.service';
-import { LevelService } from './level.service';
 export * from './ping.service';
 import { PingService } from './ping.service';
 export * from './user.service';
 import { UserService } from './user.service';
-export const APIS = [AbilityService, CharacterService, EffectService, LevelService, PingService, UserService];
+export const APIS = [CharacterService, PingService, UserService];

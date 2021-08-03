@@ -75,7 +75,7 @@ form {
   }
 
   input[type="number"] {
-    width: $form-element-width / 6;
+    width: math.div($form-element-width, 6);
   }
 
   > img {

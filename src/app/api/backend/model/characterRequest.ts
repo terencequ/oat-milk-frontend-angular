@@ -14,6 +14,19 @@
 export interface CharacterRequest { 
     name?: string | null;
     experience?: number;
+    strength?: number;
+    dexterity?: number;
+    constitution?: number;
+    intelligence?: number;
+    wisdom?: number;
+    charisma?: number;
+    armorClass?: number;
+    initiative?: number;
+    speedInFt?: number;
+    currentHitPoints?: number;
+    maxHitPoints?: number;
+    deathSaveSuccesses?: number;
+    deathSaveFailures?: number;
     acrobatics?: boolean;
     animalHandling?: boolean;
     arcana?: boolean;

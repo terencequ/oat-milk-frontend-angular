@@ -12,7 +12,7 @@
 
 
 export interface UserResponse { 
-    id?: string;
+    id?: string | null;
     displayName?: string | null;
     email?: string | null;
 }

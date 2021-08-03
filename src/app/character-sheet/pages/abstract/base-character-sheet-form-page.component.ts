@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {AbilityRequest, AttributeRequest, CharacterRequest, CharacterService, LevelService} from '../../../api/backend';
+import {CharacterRequest, CharacterService} from '../../../api/backend';
 import {BaseCharacterSheetPage} from './base-character-sheet-page.component';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {CharacterSheetFormModel} from '../../models/requests/character-sheet-form-model';
@@ -8,6 +8,7 @@ import {getAbilityNames, getSkillNames} from '../../helpers/character-sheet-type
 import {CharacterSheetStatsAbilitiesModel} from '../../models/responses/character-sheet-stats-abilities-model';
 import {CharacterSheetStatsSkillsModel} from '../../models/responses/character-sheet-stats-skills-model';
 import {SubmittableFormInterface} from '../../../shared/abstract/submittable-form.interface';
+import {LevelService} from '../../services/level/level.service';
 
 type CharacterSheetControls = { [key in keyof CharacterSheetFormModel]: AbstractControl };
 type CharacterSheetFormGroup = FormGroup & { value: CharacterSheetFormModel, controls: CharacterSheetControls };
@@ -30,6 +31,13 @@ export abstract class BaseCharacterSheetFormPage extends BaseCharacterSheetPage 
       intelligence: [10, [Validators.required]],
       wisdom: [10, [Validators.required]],
       charisma: [10, [Validators.required]],
+      armorClass: [12, [Validators.required]],
+      initiative: [0, [Validators.required]], // This should be auto-calculated
+      speedInFt: [30, [Validators.required]],
+      currentHitPoints: [10, [Validators.required]],
+      maxHitPoints: [10, [Validators.required]],
+      deathSaveSuccesses: [0, [Validators.required]],
+      deathSaveFailures: [0, [Validators.required]],
       acrobatics: [false, [Validators.required]],
       animalHandling: [false, [Validators.required]],
       arcana: [false, [Validators.required]],
@@ -89,6 +97,19 @@ export abstract class BaseCharacterSheetFormPage extends BaseCharacterSheetPage 
     const request = {
       name: formValue.name,
       experience: formValue.experience,
+      strength: formValue.strength,
+      dexterity: formValue.dexterity,
+      constitution: formValue.constitution,
+      intelligence: formValue.intelligence,
+      wisdom: formValue.wisdom,
+      charisma: formValue.charisma,
+      armorClass: formValue.armorClass,
+      initiative: formValue.initiative,
+      speedInFt: formValue.speedInFt,
+      currentHitPoints: formValue.currentHitPoints,
+      maxHitPoints: formValue.maxHitPoints,
+      deathSaveSuccesses: formValue.deathSaveSuccesses,
+      deathSaveFailures: formValue.deathSaveFailures,
       acrobatics: formValue.acrobatics,
       animalHandling: formValue.animalHandling,
       arcana: formValue.arcana,
@@ -118,19 +139,6 @@ export abstract class BaseCharacterSheetFormPage extends BaseCharacterSheetPage 
     return request;
   }
 
-  getAbilityAsAttributeRequest(ability: keyof CharacterSheetStatsAbilitiesModel): AttributeRequest | null {
-    const model = this.characterSheetForm.value;
-    if (model != null){
-      const requestedValue = model[ability];
-      return {
-        baseValue: requestedValue,
-        currentValue: requestedValue
-      };
-    } else {
-      return null;
-    }
-  }
-
   getAbilityNames(): Array<keyof CharacterSheetStatsAbilitiesModel>{
     return getAbilityNames();
   }
@@ -142,17 +150,5 @@ export abstract class BaseCharacterSheetFormPage extends BaseCharacterSheetPage 
   getFormDisplayName(name: string): string{
     const result = name.replace( /([A-Z])/g, ' $1' );
     return result.charAt(0).toUpperCase() + result.slice(1);
-  }
-
-  /**
-   * Send a request to the character service for each attribute
-   */
-  async sendAttributeUpdateRequests(id: string): Promise<void>{
-    for (const attribute of getAbilityNames()){
-      const attributeRequest = this.getAbilityAsAttributeRequest(attribute);
-      if (attributeRequest){
-        await this.characterService.characterIdAttributeAttributeTypePut(id, attribute, attributeRequest).toPromise();
-      }
-    }
   }
 }
